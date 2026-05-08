@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hira Data Solutions — Data, AI & Analytics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f8fc;
+  --bg-2: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-2: #f2f3f8;
+  --navy: #0d1126;
+  --navy-mid: #1e2545;
+  --purple: #6d4fc2;
+  --purple-mid: #8b6dd4;
+  --purple-light: #a98ee6;
+  --purple-bg: rgba(109,79,194,0.07);
+  --purple-border: rgba(109,79,194,0.2);
+  --teal: #0ea896;
+  --text: #0d1126;
+  --muted: #5a6180;
+  --dim: #9ba3c0;
+  --border: rgba(13,17,38,0.07);
+  --border-2: rgba(13,17,38,0.12);
+  --font: 'Outfit', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.75rem 6%;
+  background: var(--navy);
+  transition: all 0.35s ease;
+}
+nav.scrolled {
+  background: var(--navy);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 0.5rem 6%;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+}
+.nav-logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; }
+.nav-logo img {
+  height: 82px;
+  width: auto;
+  max-width: 240px;
+  display: block;
+  filter: brightness(0) invert(1);
+  transition: opacity 0.2s;
+}
+.nav-logo:hover img { opacity: 0.8; }
+.nav-links { display: flex; align-items: center; gap: 2.25rem; list-style: none; }
+.nav-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.2s; }
+.nav-links a:hover { color: #ffffff; }
+.nav-cta {
+  background: var(--purple) !important;
+  color: #fff !important;
+  padding: 0.5rem 1.3rem;
+  border-radius: 7px;
+  font-weight: 500 !important;
+  transition: all 0.2s !important;
+  border: 1px solid transparent;
+}
+.nav-cta:hover { background: var(--purple-mid) !important; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(109,79,194,0.3); }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 10rem 6% 6rem; background: var(--bg-2);
+  position: relative; overflow: hidden;
+}
+.hero-accent {
+  position: absolute; top: 0; right: 0;
+  width: 55%; height: 100%;
+  background: linear-gradient(135deg, rgba(109,79,194,0.04) 0%, rgba(109,79,194,0.02) 100%);
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+  pointer-events: none;
+}
+.hero-dot-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(rgba(109,79,194,0.12) 1px, transparent 1px);
+  background-size: 30px 30px;
+  mask-image: radial-gradient(ellipse 60% 60% at 80% 50%, black, transparent);
+}
+.hero-inner {
+  position: relative; z-index: 1;
+  max-width: 1180px; margin: 0 auto; width: 100%;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--purple-bg); border: 1px solid var(--purple-border);
+  border-radius: 100px; padding: 0.3rem 0.9rem;
+  font-size: 0.72rem; font-weight: 600; color: var(--purple);
+  letter-spacing: 0.07em; text-transform: uppercase;
+  margin-bottom: 1.6rem; animation: up 0.7s ease both;
+}
+.eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); animation: blink 2.5s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+h1 {
+  font-size: clamp(2.6rem, 4.8vw, 4rem); font-weight: 800;
+  color: var(--navy); line-height: 1.07; letter-spacing: -0.035em;
+  margin-bottom: 1.4rem; animation: up 0.7s 0.08s ease both;
+}
+h1 em { font-style: normal; color: var(--purple); }
+
+.hero-body {
+  font-size: 1.05rem; font-weight: 300; color: var(--muted);
+  line-height: 1.75; max-width: 460px; margin-bottom: 2.25rem;
+  animation: up 0.7s 0.15s ease both;
+}
+.hero-btns { display: flex; gap: 0.9rem; animation: up 0.7s 0.22s ease both; }
+.btn-fill {
+  background: var(--navy); color: #fff; text-decoration: none;
+  padding: 0.85rem 1.9rem; border-radius: 9px;
+  font-size: 0.92rem; font-weight: 600; letter-spacing: 0.01em;
+  transition: all 0.22s; border: 1px solid transparent;
+}
+.btn-fill:hover { background: var(--navy-mid); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(13,17,38,0.2); }
+.btn-ghost {
+  background: transparent; color: var(--muted); text-decoration: none;
+  padding: 0.85rem 1.9rem; border-radius: 9px;
+  font-size: 0.92rem; font-weight: 400; border: 1px solid var(--border-2);
+  transition: all 0.22s;
+}
+.btn-ghost:hover { border-color: var(--purple-border); color: var(--purple); background: var(--purple-bg); }
+.btn-purple {
+  background: var(--purple); color: #fff; text-decoration: none;
+  padding: 0.65rem 1.25rem; border-radius: 8px;
+  font-size: 0.85rem; font-weight: 600; display: inline-block; margin-top: 1.4rem;
+  transition: all 0.22s;
+}
+.btn-purple:hover { background: var(--purple-mid); transform: translateY(-1px); }
+
+.hero-stats {
+  display: flex; gap: 2.5rem; margin-top: 3rem;
+  padding-top: 2.5rem; border-top: 1px solid var(--border);
+  animation: up 0.7s 0.3s ease both;
+}
+.stat-n { font-size: 1.8rem; font-weight: 800; color: var(--navy); letter-spacing: -0.04em; line-height: 1; margin-bottom: 0.3rem; }
+.stat-l { font-size: 0.73rem; color: var(--dim); text-transform: uppercase; letter-spacing: 0.07em; }
+
+/* Hero visual */
+.hero-visual { animation: up 0.7s 0.15s ease both; position: relative; padding-bottom: 2rem; }
+.hcard {
+  background: var(--bg-card); border: 1px solid var(--border-2); border-radius: 18px;
+  overflow: hidden; box-shadow: 0 20px 60px rgba(13,17,38,0.1), 0 1px 0 rgba(255,255,255,0.8) inset;
+}
+.hcard-bar {
+  background: var(--bg-card-2); padding: 0.9rem 1.2rem;
+  display: flex; align-items: center; gap: 0.6rem; border-bottom: 1px solid var(--border);
+}
+.hcard-dots { display: flex; gap: 0.35rem; }
+.hd { width: 9px; height: 9px; border-radius: 50%; }
+.hd-r{background:#ff5f57} .hd-y{background:#febc2e} .hd-g{background:#28c840}
+.hcard-title { font-size: 0.75rem; font-weight: 500; color: var(--dim); letter-spacing: 0.05em; margin-left: 0.3rem; }
+.hcard-live { margin-left:auto; display:flex; align-items:center; gap:0.35rem; font-size:0.65rem; font-weight:600; color:var(--teal); text-transform:uppercase; letter-spacing:0.07em; }
+.live-dot { width:5px; height:5px; border-radius:50%; background:var(--teal); animation:blink 2.5s infinite; }
+.hcard-body { padding: 1.35rem; display: flex; flex-direction: column; gap: 0.85rem; }
+.cmsg { display: flex; gap: 0.7rem; align-items: flex-end; }
+.cmsg.user { flex-direction: row-reverse; }
+.cavatar { width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.6rem; font-weight:700; flex-shrink:0; }
+.av-u { background:var(--navy); color:white; }
+.av-a { background:linear-gradient(135deg,var(--purple),var(--teal)); color:white; }
+.cbubble {
+  background:var(--bg-card-2); border:1px solid var(--border);
+  border-radius:16px 16px 16px 4px;
+  padding:0.65rem 0.9rem; font-size:0.8rem; line-height:1.55; color:var(--muted); max-width:260px;
+}
+.cbubble.u {
+  border-radius:16px 16px 4px 16px;
+  background:var(--navy); color:#fff; border-color:var(--navy);
+  font-size: 0.8rem;
+}
+.mrow { display:grid; grid-template-columns:repeat(3,1fr); gap:0.45rem; margin-top:0.6rem; }
+.mchip { background:var(--bg); border:1px solid var(--border); border-radius:7px; padding:0.45rem 0.4rem; text-align:center; }
+.mchip .mv { font-size:0.9rem; font-weight:800; color:var(--navy); display:block; letter-spacing:-0.02em; }
+.mchip .ml { font-size:0.58rem; color:var(--dim); text-transform:uppercase; letter-spacing:0.04em; }
+.mv.t { color:var(--teal); } .mv.p { color:var(--purple); }
+.typing { display:flex; gap:0.3rem; align-items:center; padding:0.3rem 0.1rem; }
+.typing span { width:5px; height:5px; border-radius:50%; background:var(--purple); animation:ty 1.3s infinite; }
+.typing span:nth-child(2){animation-delay:.18s} .typing span:nth-child(3){animation-delay:.36s}
+@keyframes ty { 0%,60%,100%{opacity:0.2;transform:translateY(0)} 30%{opacity:1;transform:translateY(-3px)} }
+.hero-float {
+  position:absolute; bottom:-1.5rem; left:-1.5rem;
+  background:var(--bg-card); border:1px solid var(--border-2); border-radius:13px;
+  padding:0.8rem 1.1rem; display:flex; align-items:center; gap:0.7rem;
+  box-shadow:0 12px 32px rgba(13,17,38,0.12); animation:float 4s ease-in-out infinite;
+}
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+.float-icon { width:34px; height:34px; border-radius:8px; background:linear-gradient(135deg,var(--teal),var(--purple)); display:flex; align-items:center; justify-content:center; font-size:1rem; }
+.float-l { font-size:0.65rem; color:var(--dim); margin-bottom:0.1rem; }
+.float-v { font-size:0.85rem; font-weight:600; color:var(--navy); }
+
+@keyframes up { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+
+/* ── STRIP ── */
+.strip { border-top:1px solid var(--border); border-bottom:1px solid var(--border); background:var(--bg); padding:1.5rem 6%; }
+.strip-inner { max-width:1180px; margin:0 auto; display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap; }
+.strip-label { font-size:0.68rem; font-weight:600; color:var(--dim); text-transform:uppercase; letter-spacing:0.1em; padding-right:1.25rem; border-right:1px solid var(--border); flex-shrink:0; }
+.strip-items { display:flex; gap:2rem; flex-wrap:wrap; }
+.strip-item { font-size:0.83rem; color:var(--dim); transition:color 0.2s; }
+.strip-item:hover { color:var(--muted); }
+
+/* ── SECTIONS ── */
+section { padding: 6.5rem 6%; }
+.s-inner { max-width:1180px; margin:0 auto; }
+.s-label { font-size:0.68rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--purple); margin-bottom:0.85rem; display:block; }
+h2 { font-size:clamp(1.9rem,3.8vw,2.9rem); font-weight:800; color:var(--navy); line-height:1.1; letter-spacing:-0.035em; margin-bottom:1.1rem; }
+.s-sub { font-size:1rem; color:var(--muted); max-width:520px; line-height:1.75; font-weight:300; }
+
+/* ── DATA ASSISTANT ── */
+#assistant { background: var(--bg-2); }
+.plat-grid { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center; margin-top:4rem; }
+.plat-features { display:flex; flex-direction:column; gap:1.2rem; }
+.pfeat { display:flex; gap:1.1rem; align-items:flex-start; background:var(--bg); border:1px solid var(--border); border-radius:13px; padding:1.35rem; transition:all 0.22s; cursor:default; }
+.pfeat:hover { border-color:var(--purple-border); transform:translateX(5px); background:var(--bg-card); }
+.pf-icon { width:42px; height:42px; border-radius:10px; background:var(--purple-bg); border:1px solid var(--purple-border); display:flex; align-items:center; justify-content:center; font-size:1.15rem; flex-shrink:0; }
+.pf-text h4 { font-size:0.92rem; font-weight:600; color:var(--navy); margin-bottom:0.3rem; }
+.pf-text p { font-size:0.82rem; color:var(--muted); line-height:1.6; }
+/* ── DATA FLOW ── */
+.data-flow-outer {
+  display: flex; align-items: center; gap: 1.5rem;
+  position: relative;
+}
+.data-sources {
+  display: flex; flex-direction: column; gap: 0.75rem;
+  flex-shrink: 0;
+}
+.ds-row {
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.ds-chip {
+  display: flex; align-items: center; gap: 0.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-2);
+  border-radius: 10px; padding: 0.5rem 0.85rem;
+  font-size: 0.75rem; font-weight: 500; color: var(--muted);
+  white-space: nowrap; flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(13,17,38,0.07);
+}
+.ds-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.ds-arrow svg { width: 48px; height: 14px; overflow: visible; display: block; }
+.data-chat-card {
+  flex: 1;
+  background: var(--bg-card); border: 1px solid var(--border-2);
+  border-radius: 18px; overflow: hidden;
+  box-shadow: 0 16px 48px rgba(13,17,38,0.08);
+}
+.dc-head {
+  background: var(--bg-card-2); padding: 0.8rem 1.1rem;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+}
+.dc-title { font-size: 0.7rem; font-weight: 600; color: var(--dim); letter-spacing: 0.07em; text-transform: uppercase; }
+.dc-body { padding: 1.1rem; display: flex; flex-direction: column; gap: 0.8rem; }
+
+/* ── SERVICES ── */
+#services { background: var(--bg); }
+.svc-hd { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:3rem; gap:2rem; flex-wrap:wrap; }
+.svc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.1rem; }
+.scard { background:var(--bg-card); border:1px solid var(--border); border-radius:14px; padding:1.85rem; transition:all 0.25s; cursor:default; min-height: 220px; }
+.scard:hover { border-color:var(--purple-border); transform:translateY(-3px); box-shadow:0 14px 36px rgba(13,17,38,0.08); }
+.scard-icon { font-size:1.6rem; margin-bottom:1.1rem; display:block; }
+.scard h3 { font-size:1rem; font-weight:700; color:var(--navy); margin-bottom:0.6rem; }
+.scard p { font-size:0.83rem; color:var(--muted); line-height:1.65; }
+/* Featured card */
+.scard.feat {
+  grid-column: span 3;
+  background: linear-gradient(135deg, var(--purple-bg), var(--bg-card));
+  border-color: var(--purple-border);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center;
+}
+.scard.feat:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(109,79,194,0.12); }
+.feat-badge {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-size: 0.65rem; font-weight: 700; color: var(--teal);
+  text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 0.65rem;
+}
+.feat-badge::before { content: '★'; font-size: 0.55rem; }
+.tier-list { display: flex; flex-direction: column; gap: 0.55rem; }
+.tier-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.6rem 0.9rem;
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 8px; font-size: 0.8rem;
+}
+.tier-n { color: var(--navy); font-weight: 500; }
+.tier-p { color: var(--purple); font-weight: 600; }
+.tier-note { font-size: 0.7rem; color: var(--dim); margin-top: 0.65rem; line-height: 1.5; }
+
+/* ── RESULTS ── */
+#results { background: var(--navy); }
+#results .s-label { color:rgba(169,142,230,0.8); }
+#results h2 { color:#fff; }
+#results .s-sub { color:rgba(255,255,255,0.45); max-width:600px; }
+
+/* ── RESULTS ── */
+#results { background: var(--navy); }
+#results .s-label { color:rgba(169,142,230,0.8); }
+#results h2 { color:#fff; }
+#results .s-sub { color:rgba(255,255,255,0.45); max-width:600px; }
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.1rem;
+  margin-top: 3rem;
+}
+
+/* Top row: 3 cards each spanning 2 columns = 6 total */
+.results-grid .rcard:nth-child(1),
+.results-grid .rcard:nth-child(2),
+.results-grid .rcard:nth-child(3) { grid-column: span 2; }
+
+/* Bottom row: 2 cards each spanning 3 columns = 6 total, centred */
+.results-grid .rcard:nth-child(4),
+.results-grid .rcard:nth-child(5) { grid-column: span 3; }
+
+.rcard {
+  background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.09);
+  border-radius:16px; padding:1.85rem; transition:all 0.22s;
+}
+.rcard:hover { border-color:rgba(109,79,194,0.4); transform:translateY(-2px); }
+.rcard-sector {
+  font-size:0.65rem; font-weight:700; text-transform:uppercase;
+  letter-spacing:0.1em; color:rgba(169,142,230,0.7); margin-bottom:0.75rem;
+}
+.rcard h4 { font-size:1rem; font-weight:700; color:#fff; margin-bottom:0.75rem; line-height:1.25; }
+.rcard p { font-size:0.82rem; color:rgba(255,255,255,0.45); line-height:1.65; }
+.rcard-impact {
+  display: inline-flex; align-items: baseline; gap: 0.5rem;
+  margin-top: 1.35rem; padding-top: 1.25rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  width: 100%;
+}
+.rcard-num { font-size:1.6rem; font-weight:800; color:var(--teal); letter-spacing:-0.03em; line-height:1; }
+.rcard-desc { font-size:0.75rem; color:rgba(255,255,255,0.35); line-height:1.4; }
+
+/* ── PROCESS ── */
+#process { background: var(--bg-2); }
+.proc-hd { text-align:center; max-width:580px; margin:0 auto 4rem; }
+.steps { display:grid; grid-template-columns:repeat(5,1fr); gap:0; position:relative; }
+.steps::before { content:''; position:absolute; top:23px; left:10%; right:10%; height:1px; background:linear-gradient(90deg,transparent,var(--purple-border),var(--purple-border),transparent); }
+.step { display:flex; flex-direction:column; align-items:center; text-align:center; padding:0 0.75rem; position:relative; z-index:1; }
+.step-n { width:46px; height:46px; border-radius:50%; background:var(--bg); border:1.5px solid var(--purple-border); display:flex; align-items:center; justify-content:center; font-size:0.85rem; font-weight:800; color:var(--purple); margin-bottom:1.35rem; transition:all 0.2s; }
+.step:hover .step-n { background:var(--purple); border-color:var(--purple); color:#fff; box-shadow:0 0 20px rgba(109,79,194,0.25); }
+.step h4 { font-size:0.87rem; font-weight:700; color:var(--navy); margin-bottom:0.45rem; }
+.step p { font-size:0.75rem; color:var(--muted); line-height:1.55; }
+
+/* ── ABOUT ── */
+#about { background: var(--bg); }
+.about-g { display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:start; margin-top:4rem; }
+.about-text p { font-size:0.93rem; color:var(--muted); line-height:1.8; margin-bottom:1.1rem; font-weight:300; }
+.about-name-origin {
+  background: var(--purple-bg); border: 1px solid var(--purple-border);
+  border-left: 3px solid var(--purple); border-radius: 0 10px 10px 0;
+  padding: 1rem 1.2rem; margin: 1.5rem 0;
+}
+.about-name-origin p { font-size:0.85rem; color:var(--muted); line-height:1.7; margin:0; font-style:italic; }
+.about-name-origin strong { color:var(--purple); font-style:normal; }
+.chips { display:flex; flex-wrap:wrap; gap:0.45rem; margin-top:1.5rem; }
+.chip { font-size:0.72rem; padding:0.28rem 0.8rem; background:var(--bg-card); border:1px solid var(--border); border-radius:100px; color:var(--muted); }
+.founders { display:flex; flex-direction:column; gap:1.1rem; }
+.fcard { background:var(--bg-card); border:1px solid var(--border); border-radius:14px; padding:1.5rem; transition:all 0.2s; display:block; text-decoration:none; }
+.fcard:hover { border-color:var(--purple-border); box-shadow:0 8px 24px rgba(13,17,38,0.06); transform:translateY(-2px); }
+.fhead { display:flex; align-items:center; gap:0.9rem; margin-bottom:0.8rem; }
+.favatar { width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1rem; font-weight:800; color:#fff; flex-shrink:0; }
+.fa-q { background:linear-gradient(135deg,var(--purple),var(--purple-mid)); }
+.fa-h { background:linear-gradient(135deg,var(--teal),var(--purple)); }
+.fmeta h4 { font-size:0.95rem; font-weight:700; color:var(--navy); }
+.fmeta span { font-size:0.76rem; color:var(--purple); }
+.fbio { font-size:0.82rem; color:var(--muted); line-height:1.65; }
+.fcard-footer {
+  display: flex; align-items: center; gap: 0.4rem;
+  margin-top: 0.9rem; padding-top: 0.9rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.75rem; font-weight: 500; color: #0077B5;
+}
+.fcard-footer svg { width: 14px; height: 14px; fill: #0077B5; flex-shrink: 0; }
+
+/* ── TESTIMONIAL ── */
+#testimonial { padding:5rem 6%; background:var(--bg-2); text-align:center; }
+.tinner { max-width:660px; margin:0 auto; }
+blockquote { font-size:1.3rem; font-weight:300; color:var(--navy); line-height:1.7; margin-bottom:1.75rem; font-style:italic; position:relative; }
+blockquote::before { content:'"'; font-size:5rem; color:rgba(109,79,194,0.08); position:absolute; top:-2rem; left:-1rem; line-height:1; z-index:-1; font-style:normal; }
+.tauthor { display:flex; align-items:center; justify-content:center; gap:0.9rem; }
+.tau-av { width:42px; height:42px; border-radius:50%; background:linear-gradient(135deg,var(--purple),var(--teal)); display:flex; align-items:center; justify-content:center; font-weight:700; color:#fff; font-size:0.85rem; }
+.tau-n { font-size:0.88rem; font-weight:600; color:var(--navy); text-align:left; }
+.tau-c { font-size:0.75rem; color:var(--dim); }
+
+/* ── CTA ── */
+#cta { padding:6.5rem 6%; background:var(--purple); text-align:center; position:relative; overflow:hidden; }
+#cta::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 80% 80% at 50% 50%,rgba(255,255,255,0.08),transparent); }
+.cta-inner { max-width:660px; margin:0 auto; position:relative; z-index:1; }
+.cta-inner h2 { color:#fff; margin-bottom:1.1rem; }
+.cta-inner p { font-size:1rem; color:rgba(255,255,255,0.7); margin-bottom:2.25rem; font-weight:300; }
+.cta-btns { display:flex; gap:0.9rem; justify-content:center; flex-wrap:wrap; }
+.btn-white { background:#fff; color:var(--purple); text-decoration:none; padding:0.85rem 1.9rem; border-radius:9px; font-size:0.92rem; font-weight:700; transition:all 0.22s; }
+.btn-white:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(0,0,0,0.15); }
+.btn-outline-white { background:transparent; color:#fff; text-decoration:none; padding:0.85rem 1.9rem; border-radius:9px; font-size:0.92rem; font-weight:400; border:1px solid rgba(255,255,255,0.35); transition:all 0.22s; }
+.btn-outline-white:hover { background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.6); }
+.cta-trust { display:flex; align-items:center; justify-content:center; gap:2rem; margin-top:2.25rem; flex-wrap:wrap; }
+.ct-item { font-size:0.78rem; color:rgba(255,255,255,0.55); display:flex; align-items:center; gap:0.4rem; }
+.ct-item::before { content:'✓'; color:rgba(255,255,255,0.9); font-weight:700; }
+
+/* ── FOOTER ── */
+footer { background:var(--navy); border-top:1px solid rgba(255,255,255,0.07); padding:3.5rem 6% 2rem; }
+.footer-g { max-width:1180px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
+.fbrand img { height:72px; filter: brightness(0) invert(1); }
+.fbrand p { font-size:0.82rem; color:rgba(255,255,255,0.75); margin-top:0.9rem; line-height:1.7; max-width:260px; }
+.fcol h5 { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:rgba(255,255,255,0.8); margin-bottom:1.1rem; }
+.fcol a { display:block; font-size:0.82rem; color:rgba(255,255,255,0.7); text-decoration:none; margin-bottom:0.6rem; transition:color 0.2s; }
+.fcol a:hover { color:#ffffff; }
+.footer-b { max-width:1180px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; padding-top:1.75rem; border-top:1px solid rgba(255,255,255,0.07); font-size:0.75rem; color:rgba(255,255,255,0.55); flex-wrap:wrap; gap:1rem; }
+
+/* ── REVEAL ── */
+.reveal { opacity:0; transform:translateY(20px); transition:opacity 0.6s ease,transform 0.6s ease; }
+.reveal.in { opacity:1; transform:translateY(0); }
+
+/* ── MOBILE ── */
+@media(max-width:900px){
+  .hero-inner,.plat-grid,.about-g{grid-template-columns:1fr}
+  .hero-visual{display:none}
+  .svc-grid{grid-template-columns:1fr 1fr}
+  .scard.feat{grid-column:span 2; grid-template-columns:1fr;}
+  .results-grid{grid-template-columns:1fr;}
+  .results-grid .rcard:nth-child(1),
+  .results-grid .rcard:nth-child(2),
+  .results-grid .rcard:nth-child(3),
+  .results-grid .rcard:nth-child(4),
+  .results-grid .rcard:nth-child(5){grid-column:span 1;margin-left:0;}
+  .steps{grid-template-columns:1fr}
+  .steps::before{display:none}
+  .footer-g{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+}
+@media(max-width:600px){
+  .svc-grid,.results-grid{grid-template-columns:1fr}
+  .footer-g{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo"><img src="Black.png" alt="Hira Data Solutions"></a>
+  <ul class="nav-links">
+    <li><a href="#assistant">Data Assistant</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#results">Results</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#cta" class="nav-cta">Get in Touch</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-accent"></div>
+  <div class="hero-dot-grid"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow"><span class="eyebrow-dot"></span>Data &amp; AI Consultancy · London</div>
+      <h1>Your data should<br>drive <em>every decision.</em></h1>
+      <p class="hero-body">We help small and growing businesses make sense of their data — from building the right foundations to unlocking insights that actually move the needle.</p>
+      <div class="hero-btns">
+        <a href="#cta" class="btn-fill">Get in Touch</a>
+        <a href="#services" class="btn-ghost">What We Do</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-n">20+</div><div class="stat-l">Years combined experience</div></div>
+        <div><div class="stat-n">6+</div><div class="stat-l">Industries served</div></div>
+        <div><div class="stat-n">SMB</div><div class="stat-l">Focused & approachable</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hcard">
+        <div class="hcard-bar">
+          <div class="hcard-dots"><div class="hd hd-r"></div><div class="hd hd-y"></div><div class="hd hd-g"></div></div>
+          <span class="hcard-title">Hira Data Assistant</span>
+          <span class="hcard-live"><span class="live-dot"></span>Live</span>
+        </div>
+        <div class="hcard-body">
+          <div class="cmsg"><div class="cavatar av-a">H</div><div class="cbubble">Hi! How can I help?</div></div>
+          <div class="cmsg user"><div class="cavatar av-u">Q</div><div class="cbubble u">Can you give me a snapshot of my customers?</div></div>
+          <div class="cmsg"><div class="cavatar av-a">H</div><div class="cbubble">Of course! You currently have <strong style="color:var(--purple)">49 active customers</strong> and <strong style="color:var(--navy)">13 dormant customers</strong>.</div></div>
+          <div class="cmsg user"><div class="cavatar av-u">Q</div><div class="cbubble u">How many have missing payments?</div></div>
+          <div class="cmsg"><div class="cavatar av-a">H</div><div class="cbubble"><strong style="color:var(--purple)">5 customers</strong> have missing payments.</div></div>
+          <div class="cmsg user"><div class="cavatar av-u">Q</div><div class="cbubble u">Can you give me their names?</div></div>
+          <div class="cmsg"><div class="cavatar av-a">H</div><div class="cbubble"><div class="typing"><span></span><span></span><span></span></div></div></div>
+        </div>
+      </div>
+      <div class="hero-float">
+        <div class="float-icon">⚡</div>
+        <div><div class="float-l">Connected to your data</div><div class="float-v">Updated this morning</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-inner">
+    <span class="strip-label">Who we work with</span>
+    <div class="strip-items">
+      <span class="strip-item">Education</span>
+      <span class="strip-item">Accountancy</span>
+      <span class="strip-item">Estate Agents</span>
+      <span class="strip-item">Hospitality</span>
+      <span class="strip-item">Food & Beverage</span>
+      <span class="strip-item">Healthcare & Dental</span>
+      <span class="strip-item">Professional Services</span>
+      <span class="strip-item">Retail</span>
+    </div>
+  </div>
+</div>
+
+<!-- DATA ASSISTANT -->
+<section id="assistant">
+  <div class="s-inner">
+    <div class="reveal">
+      <span class="s-label">Our Product</span>
+      <h2>Meet the Hira<br>Data Assistant</h2>
+      <p class="s-sub">Your business data is scattered across spreadsheets, CRMs, and finance tools. We bring it all together — and give your team a simple way to ask questions and get answers, instantly.</p>
+    </div>
+    <div class="plat-grid">
+      <div class="plat-features reveal">
+        <div class="pfeat"><div class="pf-icon">🔗</div><div class="pf-text"><h4>Connects to your existing tools</h4><p>Salesforce, Google Sheets, Xero, HubSpot and more. We do the integration — you don't need to change how you work.</p></div></div>
+        <div class="pfeat"><div class="pf-icon">🗄️</div><div class="pf-text"><h4>One place for all your data</h4><p>Everything consolidated into a single, reliable database. No more hunting across three spreadsheets to find one number.</p></div></div>
+        <div class="pfeat"><div class="pf-icon">💬</div><div class="pf-text"><h4>Just ask the question</h4><p>Available on Telegram, Teams or Slack. Type a question in plain English and get a clear answer — no SQL, no dashboards, no training needed.</p></div></div>
+        <div class="pfeat"><div class="pf-icon">📊</div><div class="pf-text"><h4>Built for busy teams</h4><p>Designed for founders and ops managers who need answers fast, not for analysts. If you can send a message, you can use it.</p></div></div>
+      </div>
+      <div class="reveal">
+        <div class="data-flow-outer">
+          <!-- Floating source chips -->
+          <div class="data-sources">
+            <div class="ds-row">
+              <div class="ds-chip"><div class="ds-dot" style="background:#00A1E0"></div>Salesforce</div>
+              <div class="ds-arrow"><svg viewBox="0 0 48 14" fill="none"><line x1="0" y1="7" x2="36" y2="7" stroke="#6d4fc2" stroke-width="1" stroke-dasharray="3 2"/><path d="M32 3L40 7L32 11" stroke="#6d4fc2" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+            </div>
+            <div class="ds-row">
+              <div class="ds-chip"><div class="ds-dot" style="background:#0F9D58"></div>Google Sheets</div>
+              <div class="ds-arrow"><svg viewBox="0 0 48 14" fill="none"><line x1="0" y1="7" x2="36" y2="7" stroke="#6d4fc2" stroke-width="1" stroke-dasharray="3 2"/><path d="M32 3L40 7L32 11" stroke="#6d4fc2" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+            </div>
+            <div class="ds-row">
+              <div class="ds-chip"><div class="ds-dot" style="background:#E64A19"></div>Xero</div>
+              <div class="ds-arrow"><svg viewBox="0 0 48 14" fill="none"><line x1="0" y1="7" x2="36" y2="7" stroke="#6d4fc2" stroke-width="1" stroke-dasharray="3 2"/><path d="M32 3L40 7L32 11" stroke="#6d4fc2" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+            </div>
+            <div class="ds-row">
+              <div class="ds-chip"><div class="ds-dot" style="background:#FF7A59"></div>HubSpot</div>
+              <div class="ds-arrow"><svg viewBox="0 0 48 14" fill="none"><line x1="0" y1="7" x2="36" y2="7" stroke="#6d4fc2" stroke-width="1" stroke-dasharray="3 2"/><path d="M32 3L40 7L32 11" stroke="#6d4fc2" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div>
+            </div>
+          </div>
+          <!-- Chat card -->
+          <div class="data-chat-card">
+            <div class="dc-head">
+              <span class="dc-title">Hira Data Assistant</span>
+              <span class="hcard-live"><span class="live-dot"></span>Live</span>
+            </div>
+            <div class="dc-body">
+              <div class="cmsg"><div class="cavatar av-a">H</div><div class="cbubble">Hi! How can I help?</div></div>
+              <div class="cmsg user"><div class="cavatar av-u">Q</div><div class="cbubble u">Can you give me a revenue summary for this month?</div></div>
+              <div class="cmsg"><div class="cavatar av-a">H</div><div class="cbubble">Of course! You've invoiced <strong style="color:var(--purple)">£24,380</strong> this month across <strong style="color:var(--navy)">31 clients</strong> — up <strong style="color:var(--teal)">12%</strong> vs last month.</div></div>
+              <div class="cmsg user"><div class="cavatar av-u">Q</div><div class="cbubble u">How much is still outstanding?</div></div>
+              <div class="cmsg"><div class="cavatar av-a">H</div><div class="cbubble"><strong style="color:var(--purple)">£6,240</strong> across 8 invoices is still outstanding. 3 of those are overdue by more than 14 days.</div></div>
+              <div class="cmsg user"><div class="cavatar av-u">Q</div><div class="cbubble u">Who are the overdue ones?</div></div>
+              <div class="cmsg"><div class="cavatar av-a">H</div><div class="cbubble"><div class="typing"><span></span><span></span><span></span></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="s-inner">
+    <div class="svc-hd reveal">
+      <div><span class="s-label">What We Do</span><h2>How we can help</h2></div>
+      <p class="s-sub" style="margin:0">Whether you need a quick win or a full data transformation — we work at whatever stage makes sense for your business.</p>
+    </div>
+    <div class="svc-grid reveal">
+      <div class="scard" style="border-color:var(--purple-border); background:linear-gradient(135deg,var(--purple-bg),var(--bg-card));">
+        <span class="scard-icon">🤖</span>
+        <h3>Hira Data Assistant</h3>
+        <p>A conversational tool that connects to your existing systems and lets anyone on your team ask questions and get instant answers — no technical knowledge required.</p>
+      </div>
+      <div class="scard"><span class="scard-icon">🗺️</span><h3>Data Strategy & Roadmapping</h3><p>Not sure where to start? We assess where you are today, identify the biggest opportunities, and give you a clear, prioritised plan to follow.</p></div>
+      <div class="scard"><span class="scard-icon">🏗️</span><h3>Data Infrastructure</h3><p>We design and build the data foundations your business needs — cloud storage, automated pipelines, and a single source of truth your whole team can trust.</p></div>
+      <div class="scard"><span class="scard-icon">📈</span><h3>BI & Executive Reporting</h3><p>Decision-focused dashboards that give leadership clarity without noise. One version of the truth, built to be trusted.</p></div>
+      <div class="scard"><span class="scard-icon">🎯</span><h3>Customer Analytics</h3><p>Understand who your customers are, why they leave, and what keeps them coming back. We turn your customer data into a practical retention strategy.</p></div>
+      <div class="scard"><span class="scard-icon">🧠</span><h3>Data, Analytics & AI Training</h3><p>Practical upskilling for technical and non-technical teams. Build internal capability and reduce dependence on support.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="s-inner">
+    <div class="reveal">
+      <span class="s-label">Our Work</span>
+      <h2>Problems we've solved</h2>
+      <p class="s-sub">A selection of projects across the businesses we've worked with.</p>
+    </div>
+    <div class="results-grid reveal">
+
+      <div class="rcard">
+        <div class="rcard-sector">Food Delivery</div>
+        <h4>Personalised Reactivation Campaign</h4>
+        <p>Designed and executed the business's first ever personalised A/B experiment — targeting dormant customers with a free-delivery incentive using precise SQL cohort selection, no automation required.</p>
+        <div class="rcard-impact">
+          <span class="rcard-num">+7pp</span>
+          <span class="rcard-desc">incremental reactivation uplift vs control group</span>
+        </div>
+      </div>
+
+      <div class="rcard">
+        <div class="rcard-sector">Food Delivery</div>
+        <h4>Payment Behaviour Segmentation</h4>
+        <p>Built a four-segment payment framework to understand how payment behaviour drives customer value. Analysis revealed wallet users had significantly lower churn — directly shaping the business's digital payment strategy.</p>
+        <div class="rcard-impact">
+          <span class="rcard-num">30%</span>
+          <span class="rcard-desc">lower churn rate in wallet vs cash-only segment</span>
+        </div>
+      </div>
+
+      <div class="rcard">
+        <div class="rcard-sector">Food Delivery</div>
+        <h4>Order Cancellation Deep Dive</h4>
+        <p>An analytical deep dive into the true cost of cancellations. Proved that 40% of cancelled orders resulted in no reorder — and that cancellation rate was a leading indicator of churn across every customer segment.</p>
+        <div class="rcard-impact">
+          <span class="rcard-num">£1.9m</span>
+          <span class="rcard-desc">annual lost revenue identified for the first time</span>
+        </div>
+      </div>
+
+      <div class="rcard">
+        <div class="rcard-sector">Telecoms</div>
+        <h4>Product Profitability Dashboard</h4>
+        <p>Built a single source of truth for bundle-level margin — giving commercial teams visibility of which products were actually making money. Enabled what-if pricing scenarios and faster responses to competitor moves.</p>
+        <div class="rcard-impact">
+          <span class="rcard-num">Day-1</span>
+          <span class="rcard-desc">product-level profitability visibility</span>
+        </div>
+      </div>
+
+      <div class="rcard">
+        <div class="rcard-sector">Education Provider</div>
+        <h4>Hira Data Assistant</h4>
+        <p>Consolidated fragmented data sources — including Google Sheets and Salesforce — into a single reliable database, then deployed the Hira Data Assistant on top. Staff can now query live business data in plain English, instantly.</p>
+        <div class="rcard-impact">
+          <span class="rcard-num">Hours → Seconds</span>
+          <span class="rcard-desc">to answer key business questions</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="s-inner">
+    <div class="proc-hd reveal">
+      <span class="s-label">How We Work</span>
+      <h2>A structured path from data chaos to clarity</h2>
+    </div>
+    <div class="steps reveal">
+      <div class="step"><div class="step-n">01</div><h4>Gap Analysis</h4><p>We assess your data landscape and identify quick wins and pain points.</p></div>
+      <div class="step"><div class="step-n">02</div><h4>Quick Wins</h4><p>High-impact solutions implemented fast to demonstrate immediate value.</p></div>
+      <div class="step"><div class="step-n">03</div><h4>Foundation</h4><p>Scalable data infrastructure built to your pace and priorities.</p></div>
+      <div class="step"><div class="step-n">04</div><h4>Advanced Analytics</h4><p>Predictive models, AI tools, and deeper insights once foundations are solid.</p></div>
+      <div class="step"><div class="step-n">05</div><h4>Enable Teams</h4><p>Training and handover so your team can self-serve and grow.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="s-inner">
+    <div class="about-g">
+      <div>
+        <span class="s-label">Who We Are</span>
+        <h2>Built by people who've done the work</h2>
+        <div class="about-text reveal">
+          <p>Hira Data Solutions was founded in 2023 by Qasim Angudi and Haider Variava — two mathematicians who met at university and spent the next decade building data functions at some of Europe's most demanding organisations.</p>
+          <p>We started Hira because we saw a gap: growing businesses needed the kind of senior analytics thinking that large enterprises take for granted — but couldn't justify a full-time hire. We offer that expertise on your terms, at a scale that works for you.</p>
+          <p>Together with our team of handpicked specialists, we’ve delivered projects across a wide range of industries and continue to build out our capabilities and services globally.</p>
+          <div class="about-name-origin">
+            <p>The name <em><strong>Hira</strong></em> is inspired by the Cave of Hira — the place where the Prophet Muhammad (peace be upon him) would retreat to reflect and seek clarity. It holds deep significance as the birthplace of revelation in Islam.</p>
+          </div>
+        </div>
+      </div>
+      <div class="founders reveal">
+        <a href="https://www.linkedin.com/in/qasim-angudi-816bb5121/" target="_blank" class="fcard">
+          <div class="fhead"><div class="favatar fa-q">QA</div><div class="fmeta"><h4>Qasim Angudi</h4><span>Co-Founder · Head of Analytics Background</span></div></div>
+          <p class="fbio">Currently Head of Analytics at a fast-growing European business, Qasim has spent his career building and leading data teams across telecoms, food delivery, and consumer tech. He brings deep expertise in customer analytics and translating data into commercial decisions.</p>
+          <div class="fcard-footer">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            View on LinkedIn →
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/haidervariava/" target="_blank" class="fcard">
+          <div class="fhead"><div class="favatar fa-h">HV</div><div class="fmeta"><h4>Haider Variava</h4><span>Co-Founder · Data Product Background</span></div></div>
+          <p class="fbio">With a background as a Data Product Owner at one of the world's largest automotive manufacturers, Haider has shaped data strategies at enterprise scale. He specialises in data infrastructure, product thinking, and building systems that organisations actually adopt and use.</p>
+          <div class="fcard-footer">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            View on LinkedIn →
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section id="testimonial">
+  <div class="tinner reveal">
+    <blockquote>Working with Hira was a game-changer. They didn't just deliver dashboards — they uncovered insights that directly changed how we make decisions.</blockquote>
+    <div class="tauthor">
+      <div class="tau-av">P</div>
+      <div><div class="tau-n">Leadership Team</div><div class="tau-c">Food Delivery Platform · MENA</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="cta-inner reveal">
+    <h2>Not sure where to start?<br>That's exactly where we come in.</h2>
+    <p>Book a free 30-minute call. We'll look at your current setup and tell you honestly what we think the best next step is — no pitch, no pressure.</p>
+    <div class="cta-btns">
+      <a href="mailto:hello@hiradatasolutions.com" class="btn-white">Book a Free Call</a>
+      <a href="https://linkedin.com/company/hira-data-solutions" target="_blank" class="btn-outline-white">Find us on LinkedIn</a>
+    </div>
+    <div class="cta-trust">
+      <span class="ct-item">No commitment required</span>
+      <span class="ct-item">Honest advice from day one</span>
+      <span class="ct-item">UK-based team</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-g">
+    <div class="fbrand"><img src="White.png" alt="Hira Data Solutions"><p>A data and AI consultancy helping small and growing businesses make better decisions with their data. Based in the UK, working globally.</p></div>
+    <div class="fcol"><h5>What We Do</h5><a href="#assistant">Data Assistant</a><a href="#services">Data Strategy</a><a href="#services">Infrastructure</a><a href="#services">Reporting</a><a href="#services">Customer Analytics</a></div>
+    <div class="fcol"><h5>Company</h5><a href="#about">About Us</a><a href="#results">Our Work</a><a href="https://linkedin.com/company/hira-data-solutions" target="_blank">LinkedIn</a></div>
+    <div class="fcol"><h5>Contact</h5><a href="mailto:hello@hiradatasolutions.com">hello@hiradatasolutions.com</a><a href="#cta">Book a Call</a></div>
+  </div>
+  <div class="footer-b"><span>© 2026 Hira Data Solutions Ltd. All rights reserved.</span><span>Registered in England & Wales</span></div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => { if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('in'), i*70); obs.unobserve(e.target); } });
+  }, {threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
