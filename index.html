@@ -4,7 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hira Data Solutions — Data, AI & Analytics</title>
+<meta name="description" content="Hira Data Solutions is a data and AI consultancy helping small and growing businesses make better decisions with their data. From strategy to the Hira Data Assistant — based in the UK, working globally.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Hira Data Solutions — Data, AI & Analytics">
+<meta property="og:description" content="We help small and growing businesses make sense of their data — from building the right foundations to unlocking insights that actually move the needle.">
+<meta property="og:url" content="https://www.hiradatasolutions.com">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.hiradatasolutions.com/Logo Navy.png">
 <link rel="icon" type="image/png" href="Favicon.png">
+<link rel="canonical" href="https://www.hiradatasolutions.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -423,7 +431,72 @@ footer { background:var(--navy); border-top:1px solid rgba(255,255,255,0.07); pa
 .fcol a:hover { color:#ffffff; }
 .footer-b { max-width:1180px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; padding-top:1.75rem; border-top:1px solid rgba(255,255,255,0.07); font-size:0.75rem; color:rgba(255,255,255,0.55); flex-wrap:wrap; gap:1rem; }
 
-/* ── REVEAL ── */
+/* ── HAMBURGER ── */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  z-index: 300;
+}
+.nav-burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── MOBILE MENU DRAWER ── */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: var(--navy);
+  padding: 7rem 6% 2rem;
+  z-index: 199;
+  flex-direction: column;
+  gap: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  transform: translateY(-100%);
+  transition: transform 0.35s ease;
+}
+.mobile-menu.open {
+  transform: translateY(0);
+}
+.mm-link {
+  display: block;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 400;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  transition: color 0.2s;
+}
+.mm-link:hover { color: #fff; }
+.mm-cta {
+  display: inline-block;
+  margin-top: 1.5rem;
+  background: var(--purple);
+  color: #fff;
+  text-decoration: none;
+  padding: 0.85rem 1.9rem;
+  border-radius: 9px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+  transition: background 0.2s;
+}
+.mm-cta:hover { background: var(--purple-mid); }
 .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.6s ease,transform 0.6s ease; }
 .reveal.in { opacity:1; transform:translateY(0); }
 
@@ -443,6 +516,8 @@ footer { background:var(--navy); border-top:1px solid rgba(255,255,255,0.07); pa
   .steps::before{display:none}
   .footer-g{grid-template-columns:1fr 1fr}
   .nav-links{display:none}
+  .nav-burger{display:flex}
+  .mobile-menu{display:flex}
   .data-flow-outer{flex-direction:column; gap:1.5rem;}
   .data-sources{flex-direction:row; flex-wrap:wrap; justify-content:center; gap:0.5rem;}
   .ds-row{flex-direction:column; align-items:center;}
@@ -467,7 +542,19 @@ footer { background:var(--navy); border-top:1px solid rgba(255,255,255,0.07); pa
     <li><a href="#about">About</a></li>
     <li><a href="#cta" class="nav-cta">Get in Touch</a></li>
   </ul>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU DRAWER -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#assistant" class="mm-link">Data Assistant</a>
+  <a href="#services" class="mm-link">Services</a>
+  <a href="#results" class="mm-link">Results</a>
+  <a href="#about" class="mm-link">About</a>
+  <a href="#cta" class="mm-cta">Get in Touch</a>
+</div>
 
 <!-- HERO -->
 <section id="hero">
@@ -771,6 +858,21 @@ footer { background:var(--navy); border-top:1px solid rgba(255,255,255,0.07); pa
 <script>
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+
+  // Hamburger menu
+  const burger = document.getElementById('navBurger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  // Close menu when a link is clicked
+  document.querySelectorAll('.mm-link, .mm-cta').forEach(link => {
+    link.addEventListener('click', () => {
+      burger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+  });
   const obs = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => { if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('in'), i*70); obs.unobserve(e.target); } });
   }, {threshold:0.08});
