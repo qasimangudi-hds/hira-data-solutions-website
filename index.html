@@ -47,14 +47,14 @@ nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0.75rem 6%;
-  background: var(--navy);
   transition: all 0.35s ease;
 }
 nav.scrolled {
-  background: var(--navy);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background: rgba(247,248,252,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
   padding: 0.5rem 6%;
-  box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 1px 0 var(--border);
 }
 .nav-logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; }
 .nav-logo img {
@@ -66,8 +66,8 @@ nav.scrolled {
 }
 .nav-logo:hover img { opacity: 0.8; }
 .nav-links { display: flex; align-items: center; gap: 2.25rem; list-style: none; }
-.nav-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.2s; }
-.nav-links a:hover { color: #ffffff; }
+.nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
 .nav-cta {
   background: var(--purple) !important;
   color: #fff !important;
@@ -446,7 +446,7 @@ footer { background:var(--navy); border-top:1px solid rgba(255,255,255,0.07); pa
   display: block;
   width: 24px;
   height: 2px;
-  background: #ffffff;
+  background: var(--navy);
   border-radius: 2px;
   transition: all 0.3s ease;
 }
@@ -535,7 +535,7 @@ footer { background:var(--navy); border-top:1px solid rgba(255,255,255,0.07); pa
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="#" class="nav-logo"><img src="Logo White.png" alt="Hira Data Solutions"></a>
+  <a href="#" class="nav-logo"><img src="Logo Navy.png" alt="Hira Data Solutions"></a>
   <ul class="nav-links">
     <li><a href="#assistant">Data Assistant</a></li>
     <li><a href="#services">Services</a></li>
