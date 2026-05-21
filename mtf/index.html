@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muslim Tech Fest 2026 — Hira Data Solutions</title>
+<meta name="description" content="Thanks for visiting Hira Data Solutions at Muslim Tech Fest 2026. Start with the Hira Data Audit — a structured two-week diagnostic of your business's data and AI readiness.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Hira Data Solutions at Muslim Tech Fest 2026">
+<meta property="og:description" content="Start with the Hira Data Audit — find out whether your business is actually ready for AI.">
+<meta property="og:url" content="https://www.hiradatasolutions.com/mtf">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.hiradatasolutions.com/Logo Navy.png">
+<link rel="icon" type="image/png" href="/Favicon.png">
+<link rel="canonical" href="https://www.hiradatasolutions.com/mtf">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f8fc;
+  --bg-2: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-2: #f2f3f8;
+  --navy: #0d1126;
+  --navy-mid: #1e2545;
+  --purple: #6d4fc2;
+  --purple-mid: #8b6dd4;
+  --purple-light: #a98ee6;
+  --purple-bg: rgba(109,79,194,0.07);
+  --purple-border: rgba(109,79,194,0.2);
+  --teal: #0ea896;
+  --text: #0d1126;
+  --muted: #5a6180;
+  --dim: #9ba3c0;
+  --border: rgba(13,17,38,0.07);
+  --border-2: rgba(13,17,38,0.12);
+  --font: 'Outfit', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.75rem 6%;
+  background: rgba(247,248,252,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; }
+.nav-logo img {
+  height: 90px;
+  width: auto;
+  max-width: 240px;
+  display: block;
+  transition: opacity 0.2s;
+}
+.nav-logo:hover img { opacity: 0.8; }
+.nav-back {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 400;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.nav-back:hover { color: var(--text); }
+
+/* ── MAIN CONTENT ── */
+main {
+  min-height: 100vh;
+  padding: 9rem 6% 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-accent {
+  position: absolute; top: 0; right: 0;
+  width: 55%; height: 100%;
+  background: linear-gradient(135deg, rgba(109,79,194,0.04) 0%, rgba(109,79,194,0.02) 100%);
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+  pointer-events: none;
+}
+.hero-dot-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(rgba(109,79,194,0.12) 1px, transparent 1px);
+  background-size: 30px 30px;
+  mask-image: radial-gradient(ellipse 60% 60% at 80% 50%, black, transparent);
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── EVENT BADGE ── */
+.event-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--purple-bg);
+  border: 1px solid var(--purple-border);
+  color: var(--purple);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.5rem 1rem;
+  border-radius: 100px;
+  margin-bottom: 2rem;
+}
+.event-badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: var(--purple);
+  border-radius: 50%;
+}
+
+/* ── HEADLINE ── */
+h1 {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--navy);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+h1 .accent { color: var(--purple); }
+
+.sub-headline {
+  font-size: 1.15rem;
+  color: var(--purple);
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.intro {
+  font-size: 1.05rem;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+/* ── AUDIT SECTION ── */
+.audit-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 2.25rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 3px rgba(13,17,38,0.03);
+}
+
+.audit-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin-bottom: 0.85rem;
+}
+
+.audit-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.audit-description {
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+}
+
+.audit-outputs {
+  list-style: none;
+  margin-bottom: 1.5rem;
+}
+.audit-outputs li {
+  padding: 0.65rem 0;
+  padding-left: 1.75rem;
+  position: relative;
+  color: var(--text);
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--border);
+}
+.audit-outputs li:last-child { border-bottom: none; }
+.audit-outputs li::before {
+  content: "";
+  position: absolute;
+  left: 0.25rem;
+  top: 1.15rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--purple);
+}
+.audit-outputs li strong { color: var(--navy); font-weight: 600; }
+
+.audit-pricing {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  margin-top: 0.5rem;
+}
+.audit-pricing .price {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+.audit-pricing .price-note {
+  font-size: 0.85rem;
+  color: var(--dim);
+}
+
+/* ── CTA SECTION ── */
+.cta-section {
+  background: var(--navy);
+  border-radius: 14px;
+  padding: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::after {
+  content: "";
+  position: absolute;
+  top: -50%; right: -20%;
+  width: 60%; height: 200%;
+  background: radial-gradient(circle, rgba(109,79,194,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-section h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+  position: relative;
+  z-index: 2;
+}
+.cta-section p {
+  color: rgba(255,255,255,0.75);
+  font-size: 1rem;
+  margin-bottom: 1.75rem;
+  position: relative;
+  z-index: 2;
+}
+.cta-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--purple);
+  color: #fff;
+  text-decoration: none;
+  padding: 0.85rem 1.75rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  border: 1px solid var(--purple);
+}
+.btn-primary:hover {
+  background: var(--purple-mid);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(109,79,194,0.35);
+}
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.85rem 1.75rem;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  border: 1px solid rgba(255,255,255,0.25);
+}
+.btn-secondary:hover {
+  border-color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.05);
+}
+
+/* ── FOUNDER CREDIBILITY ── */
+.founders {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+.founders-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin-bottom: 0.85rem;
+}
+.founders-text {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+.founders-text strong { color: var(--navy); font-weight: 600; }
+.founders-links {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+.founders-links a {
+  color: var(--purple);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+.founders-links a:hover { color: var(--purple-mid); text-decoration: underline; }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 2rem 6%;
+  border-top: 1px solid var(--border);
+  margin-top: 2rem;
+}
+footer p {
+  color: var(--dim);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+footer a { color: var(--purple); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 720px) {
+  main { padding: 8rem 5% 3rem; }
+  .nav-logo img { height: 70px; }
+  .audit-card, .cta-section, .founders { padding: 1.5rem; }
+  .audit-title { font-size: 1.35rem; }
+  .cta-section h2 { font-size: 1.25rem; }
+  .cta-buttons { flex-direction: column; }
+  .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+}
+
+/* ── ANIMATIONS ── */
+.reveal { opacity: 0; transform: translateY(20px); animation: up 0.6s ease forwards; }
+.reveal:nth-child(1) { animation-delay: 0.05s; }
+.reveal:nth-child(2) { animation-delay: 0.15s; }
+.reveal:nth-child(3) { animation-delay: 0.25s; }
+.reveal:nth-child(4) { animation-delay: 0.35s; }
+.reveal:nth-child(5) { animation-delay: 0.45s; }
+@keyframes up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo"><img src="/Logo Navy.png" alt="Hira Data Solutions"></a>
+  <a href="/" class="nav-back">← Back to main site</a>
+</nav>
+
+<main>
+  <div class="hero-accent"></div>
+  <div class="hero-dot-grid"></div>
+
+  <div class="container">
+
+    <div class="reveal">
+      <div class="event-badge">Muslim Tech Fest 2026</div>
+    </div>
+
+    <h1 class="reveal">Thanks for visiting us. <span class="accent">Let's keep the conversation going.</span></h1>
+
+    <p class="sub-headline reveal">Before AI can answer your questions, your data has to make sense. We help with that part.</p>
+
+    <p class="intro reveal">Most small businesses aren't ready for the AI tools they're being sold. The problem isn't the tools — it's the data underneath. The Hira Data Audit is where we start.</p>
+
+    <div class="audit-card reveal">
+      <div class="audit-label">Start with the audit</div>
+      <h2 class="audit-title">The Hira Data Audit</h2>
+      <p class="audit-description">A structured two-week diagnostic of your business's data, your decisions, and your AI readiness. You walk away with:</p>
+
+      <ul class="audit-outputs">
+        <li><strong>A clear picture of your data</strong> — every system, every source, every gap, mapped in one place.</li>
+        <li><strong>A semantic layer for your business</strong> — clear definitions of what your numbers actually mean.</li>
+        <li><strong>A data quality scorecard</strong> — including how well your systems match each other.</li>
+        <li><strong>An AI-readiness verdict</strong> — and if not, exactly what needs to change first.</li>
+        <li><strong>Three costed options for what to do next</strong> — scoped, priced, ready to act on.</li>
+      </ul>
+
+      <div class="audit-pricing">
+        <span class="price">From £4,000</span>
+        <span class="price-note">· Basic and Advanced sizes available · Introductory pricing for Muslim Tech Fest attendees</span>
+      </div>
+    </div>
+
+    <div class="cta-section reveal">
+      <h2>Ready to start?</h2>
+      <p>Book a free 30-minute consultation. We'll talk through your current setup and tell you honestly whether the audit is the right next step.</p>
+      <div class="cta-buttons">
+        <a href="mailto:hello@hiradatasolutions.com?subject=Muslim%20Tech%20Fest%20-%20Audit%20Enquiry&body=Hi%20Qasim%20and%20Haider%2C%0A%0AI%20met%20you%20at%20Muslim%20Tech%20Fest%202026%20and%20would%20like%20to%20talk%20about%20the%20Hira%20Data%20Audit.%0A%0AA%20bit%20about%20my%20business%3A%0A%0A%5BBriefly%20describe%20your%20business%2C%20size%2C%20and%20what%20you'd%20like%20to%20discuss%5D%0A%0AThanks%2C" class="btn-primary">Book a call →</a>
+        <a href="/" class="btn-secondary">See the full site</a>
+      </div>
+    </div>
+
+    <div class="founders reveal">
+      <div class="founders-label">Built by people who've done the work</div>
+      <p class="founders-text">Hira was founded by <strong>Qasim Angudi</strong> and <strong>Haider Variava</strong> — two mathematicians who spent the last decade leading analytics and data product teams across telecoms, fintech, automotive, and consumer tech.</p>
+      <div class="founders-links">
+        <a href="https://www.linkedin.com/in/qasim-angudi-816bb5121/" target="_blank">Qasim on LinkedIn →</a>
+        <a href="https://www.linkedin.com/in/haidervariava/" target="_blank">Haider on LinkedIn →</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p><a href="mailto:hello@hiradatasolutions.com">hello@hiradatasolutions.com</a> · <a href="https://www.hiradatasolutions.com">hiradatasolutions.com</a></p>
+  <p>Hira Data Solutions Ltd · Registered in England &amp; Wales</p>
+</footer>
+
+</body>
+</html>
