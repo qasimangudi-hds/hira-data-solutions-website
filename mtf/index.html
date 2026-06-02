@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Muslim Tech Fest 2026 — Hira Data Solutions</title>
 <meta name="description" content="Thanks for visiting Hira Data Solutions at Muslim Tech Fest 2026. Book a call to talk through your data.">
-<meta name="robots" content="index, follow">
+<meta name="robots" content="noindex, nofollow">
 <meta property="og:title" content="Hira Data Solutions at Muslim Tech Fest 2026">
 <meta property="og:description" content="Thanks for visiting us. Let's keep the conversation going.">
 <meta property="og:url" content="https://www.hiradatasolutions.com/mtf">
@@ -16,248 +16,59 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg: #f7f8fc;
-  --bg-2: #ffffff;
-  --navy: #0d1126;
-  --navy-mid: #1e2545;
-  --purple: #6d4fc2;
-  --purple-mid: #8b6dd4;
-  --purple-bg: rgba(109,79,194,0.07);
-  --purple-border: rgba(109,79,194,0.2);
-  --text: #0d1126;
-  --muted: #5a6180;
-  --dim: #9ba3c0;
-  --border: rgba(13,17,38,0.07);
-  --font: 'Outfit', sans-serif;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--font);
-  background: var(--bg-2);
-  color: var(--text);
-  overflow-x: hidden;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* ── NAV ── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0.75rem 6%;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-}
-.nav-logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; }
-.nav-logo img {
-  height: 90px;
-  width: auto;
-  max-width: 240px;
-  display: block;
-  transition: opacity 0.2s;
-}
-.nav-logo:hover img { opacity: 0.8; }
-
-/* ── MAIN ── */
-main {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 9rem 6% 4rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.hero-accent {
-  position: absolute; top: 0; right: 0;
-  width: 55%; height: 100%;
-  background: linear-gradient(135deg, rgba(109,79,194,0.04) 0%, rgba(109,79,194,0.02) 100%);
-  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
-  pointer-events: none;
-}
-.hero-dot-grid {
-  position: absolute; inset: 0; pointer-events: none;
-  background-image: radial-gradient(rgba(109,79,194,0.12) 1px, transparent 1px);
-  background-size: 30px 30px;
-  mask-image: radial-gradient(ellipse 60% 60% at 80% 50%, black, transparent);
-}
-
-.container {
-  max-width: 640px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
-  text-align: center;
-}
-
-/* ── EVENT BADGE ── */
-.event-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--purple-bg);
-  border: 1px solid var(--purple-border);
-  color: var(--purple);
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 0.5rem 1rem;
-  border-radius: 100px;
-  margin-bottom: 2.5rem;
-}
-.event-badge::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  background: var(--purple);
-  border-radius: 50%;
-}
-
-/* ── HEADLINE ── */
-h1 {
-  font-size: clamp(2rem, 5vw, 3.25rem);
-  font-weight: 700;
-  line-height: 1.15;
-  color: var(--navy);
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
-}
-h1 .accent { color: var(--purple); }
-
-.sub {
-  font-size: 1.1rem;
-  color: var(--muted);
-  margin-bottom: 3rem;
-  max-width: 520px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* ── CTAs ── */
-.cta-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 3rem;
-}
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--purple);
-  color: #fff;
-  text-decoration: none;
-  padding: 0.95rem 2rem;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 1rem;
-  transition: all 0.2s;
-  border: 1px solid var(--purple);
-}
-.btn-primary:hover {
-  background: var(--purple-mid);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(109,79,194,0.35);
-}
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: transparent;
-  color: var(--navy);
-  text-decoration: none;
-  padding: 0.95rem 2rem;
-  border-radius: 8px;
-  font-weight: 500;
-  font-size: 1rem;
-  transition: all 0.2s;
-  border: 1px solid var(--border);
-}
-.btn-secondary:hover {
-  border-color: var(--navy);
-  background: var(--bg);
-}
-
-/* ── FOOTER ── */
-footer {
-  background: var(--navy);
-  border-top: 1px solid rgba(255,255,255,0.07);
-  text-align: center;
-  padding: 2rem 6%;
-}
-footer p {
-  color: rgba(255,255,255,0.55);
-  font-size: 0.8rem;
-  margin-bottom: 0.4rem;
-}
-footer p:last-child { margin-bottom: 0; }
-footer a {
-  color: rgba(255,255,255,0.85);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-footer a:hover { color: #fff; text-decoration: underline; }
-
-/* ── RESPONSIVE ── */
-@media (max-width: 720px) {
-  main { padding: 7rem 5% 2.5rem; }
-  .nav-logo img { height: 70px; }
-  .cta-buttons { flex-direction: column; }
-  .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
-}
-
-/* ── ANIMATIONS ── */
-.reveal { opacity: 0; transform: translateY(20px); animation: up 0.6s ease forwards; }
-.reveal:nth-child(1) { animation-delay: 0.05s; }
-.reveal:nth-child(2) { animation-delay: 0.2s; }
-.reveal:nth-child(3) { animation-delay: 0.35s; }
-.reveal:nth-child(4) { animation-delay: 0.5s; }
-@keyframes up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-</style>
+<link rel="stylesheet" href="/styles.css">
 </head>
-<body>
+<body class="page-mtf">
 
-<nav>
+<!-- NAV (minimal — logo + Book a call; hidden landing, no site nav) -->
+<nav id="nav">
   <a href="/" class="nav-logo"><img src="/Logo Navy.png" alt="Hira Data Solutions"></a>
+  <ul class="nav-links">
+    <li><a href="BOOKING_URL" target="_blank" rel="noopener" class="nav-cta">Book a call</a></li>
+  </ul>
 </nav>
 
-<main>
-  <div class="hero-accent"></div>
-  <div class="hero-dot-grid"></div>
-
-  <div class="container">
-
-    <div class="reveal">
-      <div class="event-badge">Muslim Tech Fest 2026</div>
+<!-- EVENT LANDING -->
+<section class="mtf-landing reveal">
+  <div class="mtf-inner">
+    <div class="mtf-intro">
+      <div class="hero-eyebrow"><span class="eyebrow-dot"></span>Muslim Tech Fest 2026</div>
+      <h1>Thanks for visiting us. <em>Let's keep the conversation going.</em></h1>
+      <p class="hero-body">Pick whichever feels right — book a call directly, leave your details for us to follow up, or have a look around the site first.</p>
+      <div class="hero-btns">
+        <a href="BOOKING_URL" target="_blank" rel="noopener" class="btn-fill">Book a call</a>
+      </div>
+      <a href="/" class="mtf-explore">Explore the full site
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
     </div>
-
-    <h1 class="reveal">Thanks for visiting us. <span class="accent">Let's keep the conversation going.</span></h1>
-
-    <p class="sub reveal">Pick whichever feels right — book a call directly, or have a look around the site first.</p>
-
-    <div class="cta-buttons reveal">
-      <a href="mailto:hello@hiradatasolutions.com?subject=Muslim%20Tech%20Fest%20-%20Audit%20Enquiry&body=Hi%20Qasim%20and%20Haider%2C%0A%0AI%20met%20you%20at%20Muslim%20Tech%20Fest%202026%20and%20would%20like%20to%20talk.%0A%0AA%20bit%20about%20my%20business%3A%0A%0A%5BBriefly%20describe%20your%20business%2C%20size%2C%20and%20what%20you'd%20like%20to%20discuss%5D%0A%0AThanks%2C" class="btn-primary">Book a call →</a>
-      <a href="/" class="btn-secondary">See the full site</a>
+    <div class="mtf-card">
+      <h2>Not ready to book? <em>Leave your details</em>.</h2>
+      <p>Tell us who you are and we'll reach out after the festival to pick up where we left off.</p>
+      <form class="cta-form" action="FORM_ENDPOINT" method="POST">
+        <input type="hidden" name="access_key" value="FORM_ACCESS_KEY">
+        <input type="hidden" name="subject" value="New lead from Muslim Tech Fest 2026 (hiradatasolutions.com/mtf)">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="text" name="business" placeholder="Business" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="botcheck" class="cta-hp" tabindex="-1" autocomplete="off">
+        <button type="submit" class="btn-white">Send — we'll be in touch</button>
+      </form>
     </div>
-
   </div>
-</main>
+</section>
 
+<!-- FOOTER -->
 <footer>
-  <p><a href="mailto:hello@hiradatasolutions.com">hello@hiradatasolutions.com</a> · <a href="https://www.hiradatasolutions.com">hiradatasolutions.com</a> · <a href="https://linkedin.com/company/hira-data-solutions" target="_blank">LinkedIn</a></p>
-  <p>Hira Data Solutions Ltd · Registered in England &amp; Wales</p>
+  <div class="footer-g">
+    <div class="fbrand"><img src="/Logo White.png" alt="Hira Data Solutions"><p>A data and AI consultancy helping small and growing businesses make better decisions with their data. Based in the UK, working globally.</p></div>
+    <div class="fcol"><h5>Services</h5><a href="/audit.html">Data Audit</a><a href="/data-assistant.html">Data Assistant</a><a href="/deep-dive-sprints.html">Deep-Dive Sprints</a></div>
+    <div class="fcol"><h5>Company</h5><a href="/about.html">About</a><a href="/our-work/">Our Work</a><a href="/contact.html">Contact</a><a href="https://linkedin.com/company/hira-data-solutions" target="_blank" rel="noopener">LinkedIn</a></div>
+    <div class="fcol"><h5>Contact</h5><a href="mailto:hello@hiradatasolutions.com">hello@hiradatasolutions.com</a><a href="BOOKING_URL" target="_blank" rel="noopener">Book a call</a></div>
+  </div>
+  <div class="footer-b"><span>© 2026 Hira Data Solutions Ltd. All rights reserved.</span><span>Registered in England &amp; Wales · Company No. 14832706</span></div>
 </footer>
 
+<script src="/app.js" defer></script>
 </body>
 </html>
