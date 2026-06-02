@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 </head>
-<body>
+<body class="page-sprints">
 
 <!-- NAV -->
 <nav id="nav">
@@ -58,14 +58,12 @@
   <a href="BOOKING_URL" target="_blank" rel="noopener" class="mm-cta">Book a call</a>
 </div>
 
-<!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="hero-accent"></div>
-  <div class="hero-dot-grid"></div>
-  <div class="page-hero-inner">
+<!-- OFFER HERO -->
+<section class="offer-hero">
+  <div class="offer-hero-inner reveal">
     <div class="hero-eyebrow"><span class="eyebrow-dot"></span>Focused four-week engagements</div>
     <h1>One commercial question, <em>answered properly.</em></h1>
-    <p class="hero-body">Where the audit surfaces a specific problem worth investigating, a Deep-Dive Sprint is a focused four-week engagement to quantify the opportunity and recommend exactly what to do.</p>
+    <p class="offer-dek">Where the audit surfaces a specific problem worth investigating, a Deep-Dive Sprint is a focused four-week engagement to quantify the opportunity and recommend exactly what to do.</p>
     <div class="hero-btns">
       <a href="BOOKING_URL" target="_blank" rel="noopener" class="btn-fill">Book a call</a>
       <a href="/audit.html" class="btn-ghost">Start with the Audit</a>
@@ -74,17 +72,17 @@
 </section>
 
 <!-- WHAT IT IS -->
-<section id="what" style="background:var(--bg-2);">
+<section id="what" class="s-narrow">
   <div class="s-inner">
-    <div class="reveal" style="max-width:720px;">
+    <div class="reveal">
       <span class="s-label">What it is</span>
       <h2>Not a retainer. <em>A result.</em></h2>
-      <p class="s-sub" style="max-width:640px;">A Sprint takes one named question — revenue leakage, churn, pricing, conversion, campaign measurement — and gives it four focused weeks of senior analytical attention. You get a quantified opportunity and a clear recommendation, not an open-ended engagement. Sold after an audit, so we already know your data can answer it.</p>
+      <p class="s-sub">A Sprint takes one named question — revenue leakage, churn, pricing, conversion, campaign measurement — and gives it four focused weeks of senior analytical attention. You get a quantified opportunity and a clear recommendation, not an open-ended engagement. Sold after an audit, so we already know your data can answer it.</p>
     </div>
   </div>
 </section>
 
-<!-- FIVE VARIANTS -->
+<!-- FIVE VARIANTS — question-led menu -->
 <section id="variants">
   <div class="s-inner">
     <div class="reveal" style="max-width:720px;">
@@ -92,43 +90,58 @@
       <h2>Pick the question that's <em>worth the most</em></h2>
       <p class="s-sub">Each variant answers a different commercial question. Each links to a real piece of work we've delivered.</p>
     </div>
-    <div class="svc-grid reveal" style="margin-top:3rem;">
-      <a href="/our-work/on-demand-delivery-revenue-recovery.html" class="scard">
-        <span class="scard-tag">Revenue Recovery</span>
-        <h3>What is revenue quietly leaking out of?</h3>
-        <p>Churn, cancellations, missed reorders, failed payments. We find where revenue is leaking and quantify what it's worth recovering.</p>
+    <div class="sprint-menu reveal">
+      <a href="/our-work/on-demand-delivery-revenue-recovery.html" class="sprint-row">
+        <span class="sprint-idx">01</span>
+        <div class="sprint-row-main">
+          <span class="scard-tag">Revenue Recovery</span>
+          <h3>What is revenue quietly leaking out of?</h3>
+          <p>Churn, cancellations, missed reorders, failed payments. We find where revenue is leaking and quantify what it's worth recovering.</p>
+        </div>
         <span class="scard-more">See the case study
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </span>
       </a>
-      <a href="/our-work/on-demand-delivery-customer-segmentation.html" class="scard">
-        <span class="scard-tag">Customer Segmentation</span>
-        <h3>Who are your customers, really?</h3>
-        <p>We group your customers by how they actually behave and what they're worth — so you know who to keep, grow and win back.</p>
+      <a href="/our-work/on-demand-delivery-customer-segmentation.html" class="sprint-row">
+        <span class="sprint-idx">02</span>
+        <div class="sprint-row-main">
+          <span class="scard-tag">Customer Segmentation</span>
+          <h3>Who are your customers, really?</h3>
+          <p>We group your customers by how they actually behave and what they're worth — so you know who to keep, grow and win back.</p>
+        </div>
         <span class="scard-more">See the case study
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </span>
       </a>
-      <a href="/our-work/on-demand-delivery-marketing-experimentation.html" class="scard">
-        <span class="scard-tag">Marketing Experimentation</span>
-        <h3>Which campaigns actually work?</h3>
-        <p>We design and measure real experiments, so you can tell which marketing genuinely changes the numbers — and which just looks busy.</p>
+      <a href="/our-work/on-demand-delivery-marketing-experimentation.html" class="sprint-row">
+        <span class="sprint-idx">03</span>
+        <div class="sprint-row-main">
+          <span class="scard-tag">Marketing Experimentation</span>
+          <h3>Which campaigns actually work?</h3>
+          <p>We design and measure real experiments, so you can tell which marketing genuinely changes the numbers — and which just looks busy.</p>
+        </div>
         <span class="scard-more">See the case study
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </span>
       </a>
-      <a href="/our-work/education-provider-operational-diagnosis.html" class="scard">
-        <span class="scard-tag">Operational Diagnosis</span>
-        <h3>Where does the operation lose time?</h3>
-        <p>We find where time, effort and cost leak out of your day-to-day operation — and what's worth fixing first.</p>
+      <a href="/our-work/education-provider-operational-diagnosis.html" class="sprint-row">
+        <span class="sprint-idx">04</span>
+        <div class="sprint-row-main">
+          <span class="scard-tag">Operational Diagnosis</span>
+          <h3>Where does the operation lose time?</h3>
+          <p>We find where time, effort and cost leak out of your day-to-day operation — and what's worth fixing first.</p>
+        </div>
         <span class="scard-more">See the case study
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </span>
       </a>
-      <a href="/our-work/telecoms-operator-product-profitability.html" class="scard">
-        <span class="scard-tag">Product Profitability</span>
-        <h3>Which products actually make money?</h3>
-        <p>We make margin visible at the level of the individual product or bundle — so you know what to reprice, redesign or retire.</p>
+      <a href="/our-work/telecoms-operator-product-profitability.html" class="sprint-row">
+        <span class="sprint-idx">05</span>
+        <div class="sprint-row-main">
+          <span class="scard-tag">Product Profitability</span>
+          <h3>Which products actually make money?</h3>
+          <p>We make margin visible at the level of the individual product or bundle — so you know what to reprice, redesign or retire.</p>
+        </div>
         <span class="scard-more">See the case study
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </span>
@@ -138,7 +151,7 @@
 </section>
 
 <!-- HOW A SPRINT WORKS -->
-<section id="process" style="background:var(--bg-2);">
+<section id="process">
   <div class="s-inner">
     <div class="proc-hd reveal">
       <span class="s-label">How a Sprint works</span>
@@ -153,14 +166,26 @@
   </div>
 </section>
 
+<!-- AUDIT-ANCHOR BAND -->
+<section id="sprint-after-audit">
+  <div class="s-inner">
+    <div class="reveal" style="max-width:720px;">
+      <span class="s-label">Where a Sprint fits</span>
+      <h2>A Sprint follows <em>the audit</em></h2>
+      <p class="s-sub" style="max-width:640px;">It's sold after an audit, so we already know your data can answer the question before we spend four weeks on it. The audit surfaces the question worth investigating; the Sprint answers it.</p>
+      <a href="/audit.html" class="btn-purple">Start with the Audit</a>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
-<section id="cta">
+<section class="cta-dark">
   <div class="cta-inner reveal">
     <h2>Have a question <em>worth four weeks</em>?</h2>
     <p>Book a free 30-minute call. We'll talk through the commercial question on your mind and whether a Sprint is the right way to answer it.</p>
     <div class="cta-btns">
       <a href="BOOKING_URL" target="_blank" rel="noopener" class="btn-white">Book a call</a>
-      <a href="/contact.html" class="btn-outline-white">Contact us</a>
+      <a href="/contact.html" class="btn-outline-white">Get in touch</a>
     </div>
     <div class="cta-points">
       <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>No commitment required</span>

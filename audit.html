@@ -18,7 +18,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/styles.css">
 </head>
-<body>
+<body class="page-audit">
 
 <!-- NAV -->
 <nav id="nav">
@@ -58,14 +58,12 @@
   <a href="BOOKING_URL" target="_blank" rel="noopener" class="mm-cta">Book a call</a>
 </div>
 
-<!-- PAGE HERO -->
-<section class="page-hero">
-  <div class="hero-accent"></div>
-  <div class="hero-dot-grid"></div>
-  <div class="page-hero-inner">
+<!-- OFFER HERO -->
+<section class="offer-hero">
+  <div class="offer-hero-inner reveal">
     <div class="hero-eyebrow"><span class="eyebrow-dot"></span>The lead offer</div>
     <h1>Start with the <em>Audit</em>.</h1>
-    <p class="hero-body">The Hira Data Audit is a structured two-week diagnostic of your data, your decisions and your AI-readiness. You walk away knowing exactly where you stand — and exactly what to do next.</p>
+    <p class="offer-dek">The Hira Data Audit is a structured two-week diagnostic of your data, your decisions and your AI-readiness. You walk away knowing exactly where you stand — and exactly what to do next.</p>
     <div class="hero-btns">
       <a href="BOOKING_URL" target="_blank" rel="noopener" class="btn-fill">Book a call</a>
       <a href="#deliverables" class="btn-ghost">What you get</a>
@@ -74,52 +72,77 @@
 </section>
 
 <!-- WHAT THE AUDIT IS -->
-<section id="what" style="background:var(--bg-2);">
+<section id="what" class="s-narrow">
   <div class="s-inner">
-    <div class="reveal" style="max-width:720px;">
+    <div class="reveal">
       <span class="s-label">What it is</span>
       <h2>A clear-eyed look at your data, <em>before you build anything</em></h2>
-      <p class="s-sub" style="max-width:640px;">Most small businesses run on data scattered across Xero, a CRM, spreadsheets and a few SaaS tools — and the numbers rarely agree. The audit is where we sit with you and your team and work out what your data actually says, what it means, and whether it can carry the decisions you want to make on top of it.</p>
+      <p class="s-sub">Most small businesses run on data scattered across Xero, a CRM, spreadsheets and a few SaaS tools — and the numbers rarely agree. The audit is where we sit with you and your team and work out what your data actually says, what it means, and whether it can carry the decisions you want to make on top of it.</p>
     </div>
   </div>
 </section>
 
-<!-- FIVE DELIVERABLES -->
+<!-- FIVE DELIVERABLES — numbered manifest -->
 <section id="deliverables">
   <div class="s-inner">
-    <div class="reveal" style="max-width:720px;">
+    <div class="reveal manifest-hd">
       <span class="s-label">What you walk away with</span>
       <h2>Five concrete <em>deliverables</em></h2>
       <p class="s-sub">Not a slide deck of observations. A working picture of your data you can act on.</p>
     </div>
-    <div class="deliv-list reveal" style="margin-top:2.5rem; max-width:760px;">
-      <div class="deliv-item">
-        <span class="deliv-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+    <div class="manifest reveal">
+      <div class="manifest-item">
         <p class="di-text"><strong>A clear picture of your data.</strong> Every system, every source, every gap, mapped in one place — probably for the first time.</p>
       </div>
-      <div class="deliv-item">
-        <span class="deliv-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+      <div class="manifest-item">
         <p class="di-text"><strong>A semantic layer for your business.</strong> Clear definitions of what your numbers actually mean, resolved across your systems, agreed by your team and documented for everyone to use.</p>
       </div>
-      <div class="deliv-item">
-        <span class="deliv-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+      <div class="manifest-item">
         <p class="di-text"><strong>A scored, prioritised view of your data quality</strong> — including how well your systems actually match each other.</p>
       </div>
-      <div class="deliv-item">
-        <span class="deliv-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+      <div class="manifest-item">
         <p class="di-text"><strong>A clear verdict on whether you're AI-ready</strong> — and if not, exactly what needs to change first.</p>
       </div>
-      <div class="deliv-item">
-        <span class="deliv-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+      <div class="manifest-item">
         <p class="di-text"><strong>Clear options for what to do next</strong> — scoped and ready to act on.</p>
       </div>
     </div>
-    <p class="reveal" style="margin-top:2rem; color:var(--muted); font-size:0.95rem; font-weight:300; max-width:760px;">Delivered as a <strong style="color:var(--navy);font-weight:600;">written report</strong> plus a <strong style="color:var(--navy);font-weight:600;">live walkthrough</strong> with your leadership team.</p>
+    <p class="manifest-foot reveal">Delivered as a <strong>written report</strong> plus a <strong>90-minute live walkthrough</strong> with your leadership team.</p>
+  </div>
+</section>
+
+<!-- TWO-WEEK PROCESS SPINE -->
+<section id="process-audit">
+  <div class="s-inner">
+    <div class="reveal" style="max-width:720px;">
+      <span class="s-label">How it runs</span>
+      <h2>A structured <em>two-week diagnostic</em></h2>
+      <p class="s-sub">No long, open-ended engagement. A focused sequence with a fixed shape and a clear end.</p>
+    </div>
+    <ol class="spine reveal">
+      <li class="spine-step">
+        <h4>Kickoff &amp; interviews</h4>
+        <p>Structured interviews with the people who run your business, to understand the decisions you're trying to make and the questions your data should be answering.</p>
+      </li>
+      <li class="spine-step">
+        <h4>Technical review of your sources</h4>
+        <p>A hands-on, read-only review of your data sources — how they're structured, how well they agree with each other, and where the gaps are.</p>
+      </li>
+      <li class="spine-step">
+        <h4>Building the five outputs</h4>
+        <p>We turn what we've found into the five deliverables — the data map, the semantic layer, the data-quality scorecard and the AI-readiness verdict.</p>
+      </li>
+      <li class="spine-step">
+        <h4>Report &amp; live walkthrough</h4>
+        <p>You receive a written report and a 90-minute live walkthrough with your leadership team, ending with clear, scoped options for what to do next.</p>
+      </li>
+    </ol>
+    <p class="spine-foot reveal">Basic ~1–2 weeks · Advanced ~2–3 weeks — around 6–8 hours of your leadership's time (8–12 hours for an Advanced audit).</p>
   </div>
 </section>
 
 <!-- TIERS BY SCOPE -->
-<section id="tiers" style="background:var(--bg-2);">
+<section id="tiers">
   <div class="s-inner">
     <div class="reveal" style="max-width:720px;">
       <span class="s-label">Sizing</span>
@@ -162,7 +185,7 @@
       <h2>The audit tells you <em>what's possible</em></h2>
       <p class="s-sub">There's no obligation to go further. Most clients do — into one of these, or both.</p>
     </div>
-    <div class="svc-grid reveal" style="grid-template-columns:1fr 1fr; margin-top:3rem;">
+    <div class="svc-grid reveal">
       <a href="/data-assistant.html" class="scard">
         <h3>The Hira Data Assistant</h3>
         <p>We build the foundations the audit identified and deploy our AI-powered interface, so your team can ask questions of your business in plain English — in Slack, in Teams, wherever you work.</p>
@@ -182,13 +205,13 @@
 </section>
 
 <!-- CTA -->
-<section id="cta">
+<section class="cta-dark">
   <div class="cta-inner reveal">
     <h2>Ready to <em>start</em>?</h2>
     <p>Book a free 30-minute call. We'll talk through your current setup and tell you honestly whether the audit is the right next step — no pitch, no pressure.</p>
     <div class="cta-btns">
       <a href="BOOKING_URL" target="_blank" rel="noopener" class="btn-white">Book a call</a>
-      <a href="/contact.html" class="btn-outline-white">Contact us</a>
+      <a href="/contact.html" class="btn-outline-white">Get in touch</a>
     </div>
     <div class="cta-points">
       <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>No commitment required</span>
