@@ -1,0 +1,6 @@
+# Cloudflare Pages redirects
+# Case Studies were renamed to Our Work in the v2.0 nav restructure.
+/case-studies/* /our-work/:splat 301
+# Services overview page removed; Services is now a nav dropdown of the three offers.
+/services /#how 301
+/services.html /#how 301

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Hira Data Solutions</title>
+<meta name="description" content="Get in touch with Hira Data Solutions. Book a free 30-minute call, leave your details, or reach us by email or LinkedIn.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Contact — Hira Data Solutions">
+<meta property="og:description" content="Book a call, leave your details, or reach us by email or LinkedIn.">
+<meta property="og:url" content="https://www.hiradatasolutions.com/contact">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.hiradatasolutions.com/Logo Navy.png">
+<link rel="icon" type="image/png" href="/Favicon.png">
+<link rel="canonical" href="https://www.hiradatasolutions.com/contact">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body class="page-contact">
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="/" class="nav-logo"><img src="/Logo Navy.png" alt="Hira Data Solutions"></a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li class="nav-item has-dropdown">
+      <a>Services</a>
+      <div class="nav-dropdown">
+        <a href="/audit.html">Data Audit</a>
+        <a href="/data-assistant.html">Data Assistant</a>
+        <a href="/deep-dive-sprints.html">Deep-Dive Sprints</a>
+      </div>
+    </li>
+    <li><a href="/our-work/">Our Work</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/contact.html" class="active">Contact</a></li>
+    <li><a href="BOOKING_URL" target="_blank" rel="noopener" class="nav-cta">Book a call</a></li>
+  </ul>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE MENU DRAWER -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/" class="mm-link">Home</a>
+  <div class="mm-group">
+    <button class="mm-toggle" id="mmServicesToggle">Services</button>
+    <div class="mm-sub">
+      <a href="/audit.html">Data Audit</a>
+      <a href="/data-assistant.html">Data Assistant</a>
+      <a href="/deep-dive-sprints.html">Deep-Dive Sprints</a>
+    </div>
+  </div>
+  <a href="/our-work/" class="mm-link">Our Work</a>
+  <a href="/about.html" class="mm-link">About</a>
+  <a href="/contact.html" class="mm-link">Contact</a>
+  <a href="BOOKING_URL" target="_blank" rel="noopener" class="mm-cta">Book a call</a>
+</div>
+
+<!-- CONTACT HUB -->
+<section class="contact-hub reveal">
+  <div class="contact-inner">
+    <div class="contact-intro">
+      <div class="hero-eyebrow"><span class="eyebrow-dot"></span>Get in touch</div>
+      <h1>Let's talk about <em>your data</em>.</h1>
+      <p class="hero-body">Whether you have a specific question in mind or just want to know where to start, we're happy to talk it through. Book a call, leave your details, or reach us directly — whichever suits you.</p>
+      <ul class="contact-next">
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>A free 30-minute call</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>No pitch, no pressure</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>We reply within one working day</li>
+      </ul>
+      <div class="contact-links">
+        <a href="mailto:EMAIL_ADDRESS">EMAIL_ADDRESS
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="https://linkedin.com/company/hira-data-solutions" target="_blank" rel="noopener">Find us on LinkedIn
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="contact-card">
+      <h2>Leave your <em>details</em>.</h2>
+      <p>Tell us who you are and what's on your mind, and we'll be in touch to pick it up from there.</p>
+      <a href="BOOKING_URL" target="_blank" rel="noopener" class="btn-fill">Book a call</a>
+      <div class="cta-divider">or leave your details</div>
+      <form class="cta-form" action="FORM_ENDPOINT" method="POST">
+        <input type="hidden" name="access_key" value="FORM_ACCESS_KEY">
+        <input type="hidden" name="subject" value="New enquiry from the Contact page on hiradatasolutions.com">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="text" name="business" placeholder="Business" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="text" name="botcheck" class="cta-hp" tabindex="-1" autocomplete="off">
+        <button type="submit" class="btn-white">Send — we'll be in touch</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-g">
+    <div class="fbrand"><img src="/Logo White.png" alt="Hira Data Solutions"><p>A data and AI consultancy helping small and growing businesses make better decisions with their data. Based in the UK, working globally.</p></div>
+    <div class="fcol"><h5>Services</h5><a href="/audit.html">Data Audit</a><a href="/data-assistant.html">Data Assistant</a><a href="/deep-dive-sprints.html">Deep-Dive Sprints</a></div>
+    <div class="fcol"><h5>Company</h5><a href="/about.html">About</a><a href="/our-work/">Our Work</a><a href="/contact.html">Contact</a><a href="https://linkedin.com/company/hira-data-solutions" target="_blank" rel="noopener">LinkedIn</a></div>
+    <div class="fcol"><h5>Contact</h5><a href="mailto:hello@hiradatasolutions.com">hello@hiradatasolutions.com</a><a href="BOOKING_URL" target="_blank" rel="noopener">Book a call</a></div>
+  </div>
+  <div class="footer-b"><span>© 2026 Hira Data Solutions Ltd. All rights reserved.</span><span>Registered in England &amp; Wales · Company No. 14832706</span></div>
+</footer>
+
+<script src="/app.js" defer></script>
+</body>
+</html>
