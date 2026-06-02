@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Which bundles actually make money — Hira Data Solutions</title>
+<meta name="description" content="How Hira built a product-profitability view for a UK telecoms operator — per-bundle cost, revenue and margin in a single source of truth, turning fragmented usage and cost data into clear pricing and product decisions.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Which bundles actually make money — Hira Data Solutions">
+<meta property="og:description" content="A Product Profitability case study: making per-bundle margin visible so a product team can see which bundles to keep, reprice or retire.">
+<meta property="og:url" content="https://www.hiradatasolutions.com/our-work/telecoms-operator-product-profitability">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://www.hiradatasolutions.com/Logo Navy.png">
+<link rel="icon" type="image/png" href="/Favicon.png">
+<link rel="canonical" href="https://www.hiradatasolutions.com/our-work/telecoms-operator-product-profitability">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f8fc;
+  --bg-2: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-2: #f2f3f8;
+  --navy: #0d1126;
+  --navy-mid: #1e2545;
+  --purple: #6d4fc2;
+  --purple-mid: #8b6dd4;
+  --purple-light: #a98ee6;
+  --purple-bg: rgba(109,79,194,0.07);
+  --purple-border: rgba(109,79,194,0.2);
+  --teal: #0ea896;
+  --text: #0d1126;
+  --muted: #5a6180;
+  --dim: #9ba3c0;
+  --border: rgba(13,17,38,0.07);
+  --border-2: rgba(13,17,38,0.12);
+  --font: 'Outfit', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); background: var(--bg); color: var(--text); overflow-x: hidden; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+/* ── NAV (shared) ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.75rem 6%;
+  transition: all 0.35s ease;
+}
+nav.scrolled {
+  background: rgba(247,248,252,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem 6%;
+  box-shadow: 0 1px 0 var(--border);
+}
+.nav-logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; }
+.nav-logo img { height: 64px; width: auto; max-width: 280px; display: block; transition: opacity 0.2s; }
+.nav-logo:hover img { opacity: 0.8; }
+.nav-links { display: flex; align-items: center; gap: 2.25rem; list-style: none; }
+.nav-links a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 400; transition: color 0.2s; }
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  background: var(--purple) !important; color: #fff !important;
+  padding: 0.5rem 1.3rem; border-radius: 7px;
+  font-weight: 500 !important; transition: all 0.2s !important; border: 1px solid transparent;
+}
+.nav-cta:hover { background: var(--purple-mid) !important; transform: translateY(-1px); box-shadow: 0 4px 14px rgba(109,79,194,0.3); }
+
+/* When the nav sits over the dark hero (top of page), invert link colours for contrast */
+nav:not(.scrolled) .nav-links a:not(.nav-cta) { color: rgba(255,255,255,0.8); }
+nav:not(.scrolled) .nav-links a:not(.nav-cta):hover { color: #fff; }
+nav:not(.scrolled) .nav-burger span { background: #fff; }
+
+/* Services dropdown (desktop) */
+.nav-item { position: relative; }
+.nav-item.has-dropdown > a { display: inline-flex; align-items: center; gap: 0.32rem; cursor: default; }
+.nav-item.has-dropdown > a::after {
+  content: ""; width: 6px; height: 6px; border-right: 1.6px solid currentColor; border-bottom: 1.6px solid currentColor;
+  transform: rotate(45deg) translateY(-1px); transition: transform 0.2s; opacity: 0.7;
+}
+.nav-item.has-dropdown:hover > a::after,
+.nav-item.has-dropdown:focus-within > a::after { transform: rotate(-135deg) translateY(-1px); }
+.nav-dropdown {
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px);
+  min-width: 210px; background: var(--bg-2); border: 1px solid var(--border-2); border-radius: 11px;
+  box-shadow: 0 12px 32px rgba(13,17,38,0.12); padding: 0.5rem; display: flex; flex-direction: column;
+  opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.nav-item.has-dropdown:hover .nav-dropdown,
+.nav-item.has-dropdown:focus-within .nav-dropdown {
+  opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0);
+}
+.nav-dropdown a { display: block; padding: 0.6rem 0.85rem; border-radius: 7px; font-size: 0.88rem; color: var(--muted); white-space: nowrap; transition: background 0.15s, color 0.15s; }
+.nav-dropdown a:hover { background: var(--bg); color: var(--purple); }
+nav:not(.scrolled) .nav-links .nav-dropdown a { color: var(--muted); }
+nav:not(.scrolled) .nav-links .nav-dropdown a:hover { color: var(--purple); }
+/* mobile services submenu */
+.mm-group { border-bottom: 1px solid var(--border); }
+.mm-toggle {
+  display: flex; align-items: center; justify-content: space-between; width: 100%;
+  background: none; border: none; cursor: pointer; color: var(--muted); font-family: var(--font);
+  font-size: 1.1rem; font-weight: 400; padding: 1rem 0; text-align: left;
+}
+.mm-toggle::after {
+  content: ""; width: 7px; height: 7px; border-right: 1.8px solid currentColor; border-bottom: 1.8px solid currentColor;
+  transform: rotate(45deg); transition: transform 0.25s;
+}
+.mm-group.open .mm-toggle::after { transform: rotate(-135deg); }
+.mm-sub { display: none; flex-direction: column; padding: 0 0 0.6rem 1rem; }
+.mm-group.open .mm-sub { display: flex; }
+.mm-sub a { display: block; color: var(--muted); text-decoration: none; font-size: 1rem; padding: 0.6rem 0; transition: color 0.2s; }
+.mm-sub a:hover { color: var(--purple); }
+
+/* ── BUTTONS (shared) ── */
+.btn-fill { background: var(--navy); color: #fff; text-decoration: none; padding: 0.85rem 1.9rem; border-radius: 9px; font-size: 0.92rem; font-weight: 600; letter-spacing: 0.01em; transition: all 0.22s; border: 1px solid transparent; }
+.btn-fill:hover { background: var(--navy-mid); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(13,17,38,0.2); }
+.btn-ghost { background: transparent; color: var(--muted); text-decoration: none; padding: 0.85rem 1.9rem; border-radius: 9px; font-size: 0.92rem; font-weight: 400; border: 1px solid var(--border-2); transition: all 0.22s; }
+.btn-ghost:hover { border-color: var(--purple-border); color: var(--purple); background: var(--purple-bg); }
+.btn-white { background:#fff; color:var(--purple); text-decoration:none; padding:0.85rem 1.9rem; border-radius:9px; font-size:0.92rem; font-weight:700; transition:all 0.22s; }
+.btn-white:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(0,0,0,0.15); }
+.btn-outline-white { background:transparent; color:#fff; text-decoration:none; padding:0.85rem 1.9rem; border-radius:9px; font-size:0.92rem; font-weight:400; border:1px solid rgba(255,255,255,0.35); transition:all 0.22s; }
+.btn-outline-white:hover { background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.6); }
+
+@keyframes up { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+/* ══════════════════════════════════════════════════════════ */
+/*  CASE-STUDY ARCHETYPE (see brand/website-guidelines.md §14) */
+/* ══════════════════════════════════════════════════════════ */
+
+/* ── CS HERO — dark gradient, no clip-path, no dot-grid ── */
+#cs-hero { background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 100%); padding: 10rem 6% 5rem; position: relative; overflow: hidden; }
+#cs-hero::after { content:''; position:absolute; left:0; right:0; bottom:0; height:1px; background: linear-gradient(90deg, transparent, var(--purple), transparent); }
+.cs-hero-inner { max-width: 1080px; margin: 0 auto; position: relative; z-index: 1; }
+.cs-eyebrow { display:inline-flex; align-items:center; gap:0.55rem; background:rgba(109,79,194,0.18); border:1px solid var(--purple-border); border-radius:100px; padding:0.32rem 0.95rem; font-size:0.7rem; font-weight:700; color:var(--purple-light); letter-spacing:0.09em; text-transform:uppercase; margin-bottom:1.6rem; animation:up 0.7s ease both; }
+.cs-eyebrow .dot { width:6px; height:6px; border-radius:50%; background:var(--teal); animation:blink 2.5s ease-in-out infinite; }
+.cs-h1 { font-size:clamp(2.4rem,4.6vw,3.7rem); font-weight:800; color:#fff; line-height:1.08; letter-spacing:-0.035em; max-width:820px; margin-bottom:1.4rem; animation:up 0.7s 0.1s ease both; }
+.cs-h1 em { font-style:normal; color:var(--purple-light); }
+.cs-dek { font-size:1.1rem; font-weight:300; color:rgba(255,255,255,0.7); line-height:1.7; max-width:620px; animation:up 0.7s 0.18s ease both; }
+
+/* ── CS BODY — sticky rail + reading column ── */
+.cs-body { max-width:1080px; margin:0 auto; padding:4.5rem 6% 5.5rem; display:grid; grid-template-columns:220px 1fr; gap:4.5rem; align-items:start; }
+
+/* signature device 1: sticky meta rail */
+.cs-rail { position:sticky; top:110px; display:flex; flex-direction:column; gap:1.8rem; }
+.rail-meta { display:flex; flex-direction:column; gap:1.1rem; padding-bottom:1.8rem; border-bottom:1px solid var(--border); }
+.rail-row .k { display:block; font-size:0.62rem; font-weight:700; text-transform:uppercase; letter-spacing:0.14em; color:var(--dim); margin-bottom:0.3rem; }
+.rail-row .v { font-size:0.92rem; font-weight:600; color:var(--navy); line-height:1.35; }
+.rail-metrics { display:flex; flex-direction:column; gap:1.4rem; }
+.rail-metric .n { font-size:1.85rem; font-weight:800; color:var(--purple); letter-spacing:-0.04em; line-height:1; margin-bottom:0.35rem; }
+.rail-metric.lead .n { color:var(--navy); }
+.rail-metric .l { font-size:0.72rem; color:var(--muted); line-height:1.4; }
+
+/* ── CS ARTICLE — single editorial column ── */
+.cs-article { max-width:680px; }
+
+/* signature device 2: numbered section system + hairline dividers */
+.cs-sec { border-top:1px solid var(--border); margin-top:3rem; padding-top:3rem; }
+.cs-sec:first-child { border-top:none; margin-top:0; padding-top:0; }
+.cs-sec-head { display:flex; align-items:baseline; gap:0.9rem; margin-bottom:1.1rem; }
+.cs-num { font-size:1.5rem; font-weight:800; color:var(--purple); letter-spacing:-0.03em; line-height:1; font-variant-numeric:tabular-nums; }
+.cs-kicker { font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.14em; color:var(--dim); }
+.cs-article h2 { font-size:clamp(1.5rem,2.6vw,2rem); font-weight:800; color:var(--navy); line-height:1.14; letter-spacing:-0.03em; margin-bottom:1.2rem; }
+.cs-article h2 em { font-style:normal; color:var(--purple); }
+.cs-prose p { font-size:1.05rem; font-weight:300; color:var(--muted); line-height:1.85; margin-bottom:1.1rem; }
+.cs-prose p:last-child { margin-bottom:0; }
+.cs-prose p strong { font-weight:600; color:var(--navy); }
+
+/* editorial pull-stat (headline number) */
+.cs-pull { border-left:3px solid var(--purple); padding:0.3rem 0 0.3rem 1.5rem; margin:2.2rem 0; }
+.cs-pull .big { font-size:clamp(2.2rem,4vw,2.9rem); font-weight:800; color:var(--navy); letter-spacing:-0.04em; line-height:1.05; margin-bottom:0.5rem; }
+.cs-pull .big em { font-style:normal; color:var(--purple); }
+.cs-pull .cap { font-size:0.95rem; font-weight:400; color:var(--muted); line-height:1.55; }
+
+/* inline metric grid (light, not the homepage dark cards) */
+.cs-metrics { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; margin-top:2.2rem; }
+.cs-metric { border:1px solid var(--border-2); border-radius:14px; padding:1.4rem 1.5rem; background:var(--bg-2); transition:all 0.22s; }
+.cs-metric:hover { border-color:var(--purple-border); transform:translateY(-2px); box-shadow:0 8px 24px rgba(13,17,38,0.06); }
+.cs-metric .n { font-size:1.8rem; font-weight:800; letter-spacing:-0.04em; line-height:1; margin-bottom:0.5rem; color:var(--purple); }
+.cs-metric.lead .n { color:var(--navy); }
+.cs-metric.teal .n { color:var(--teal); }
+.cs-metric .l { font-size:0.8rem; color:var(--muted); line-height:1.5; }
+
+/* ── CS CTA — dark band, bookends the hero ── */
+#cs-cta { padding:6rem 6%; background:linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 100%); text-align:center; position:relative; overflow:hidden; }
+#cs-cta::before { content:''; position:absolute; left:0; right:0; top:0; height:1px; background:linear-gradient(90deg, transparent, var(--purple), transparent); }
+.cs-cta-inner { max-width:660px; margin:0 auto; position:relative; z-index:1; }
+.cs-cta-tag { display:inline-block; font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--purple-light); background:rgba(109,79,194,0.18); border:1px solid var(--purple-border); border-radius:100px; padding:0.35rem 1rem; margin-bottom:1.4rem; }
+#cs-cta h2 { font-size:clamp(1.7rem,3.4vw,2.4rem); font-weight:800; color:#fff; line-height:1.14; letter-spacing:-0.03em; margin-bottom:1.1rem; }
+#cs-cta h2 em { font-style:normal; color:var(--purple-light); }
+#cs-cta p { font-size:1.05rem; color:rgba(255,255,255,0.72); margin-bottom:2.25rem; font-weight:300; line-height:1.7; }
+.cs-cta-btns { display:flex; gap:0.9rem; justify-content:center; flex-wrap:wrap; }
+
+/* ── FOOTER (shared) ── */
+footer { background:var(--navy); border-top:1px solid rgba(255,255,255,0.07); padding:3.5rem 6% 2rem; }
+.footer-g { max-width:1180px; margin:0 auto; display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:3rem; margin-bottom:3rem; }
+.fbrand img { height:100px; margin-left:-16px; }
+.fbrand p { font-size:0.82rem; color:rgba(255,255,255,0.75); margin-top:0.9rem; line-height:1.7; max-width:260px; }
+.fcol h5 { font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:rgba(255,255,255,0.8); margin-bottom:1.1rem; }
+.fcol a { display:block; font-size:0.82rem; color:rgba(255,255,255,0.7); text-decoration:none; margin-bottom:0.6rem; transition:color 0.2s; }
+.fcol a:hover { color:#ffffff; }
+.footer-b { max-width:1180px; margin:0 auto; display:flex; justify-content:space-between; align-items:center; padding-top:1.75rem; border-top:1px solid rgba(255,255,255,0.07); font-size:0.75rem; color:rgba(255,255,255,0.55); flex-wrap:wrap; gap:1rem; }
+
+/* ── HAMBURGER (shared) ── */
+.nav-burger { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px; z-index:300; }
+.nav-burger span { display:block; width:24px; height:2px; background:var(--navy); border-radius:2px; transition:all 0.3s ease; }
+.nav-burger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity:0; }
+.nav-burger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+
+/* ── MOBILE MENU (shared) ── */
+.mobile-menu { display:none; position:fixed; top:0; left:0; right:0; background:rgba(247,248,252,0.98); backdrop-filter:blur(20px); padding:7rem 6% 2rem; z-index:199; flex-direction:column; gap:0; border-bottom:1px solid var(--border); box-shadow:0 8px 32px rgba(13,17,38,0.08); transform:translateY(-100%); transition:transform 0.35s ease; }
+.mobile-menu.open { transform:translateY(0); }
+.mm-link { display:block; color:var(--muted); text-decoration:none; font-size:1.1rem; font-weight:400; padding:1rem 0; border-bottom:1px solid var(--border); transition:color 0.2s; }
+.mm-link:hover { color:var(--text); }
+.mm-cta { display:inline-block; margin-top:1.5rem; background:var(--purple); color:#fff; text-decoration:none; padding:0.85rem 1.9rem; border-radius:9px; font-size:0.95rem; font-weight:600; text-align:center; transition:background 0.2s; }
+.mm-cta:hover { background:var(--purple-mid); }
+
+/* ── SCROLL REVEAL (shared) ── */
+.reveal { opacity:0; transform:translateY(20px); transition:opacity 0.6s ease,transform 0.6s ease; }
+.reveal.in { opacity:1; transform:translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .cs-body{ grid-template-columns:1fr; gap:2.5rem; padding-top:3.5rem; }
+  .cs-rail{ position:static; top:auto; flex-direction:row; flex-wrap:wrap; gap:1.4rem 2.5rem; padding-bottom:2rem; border-bottom:1px solid var(--border); }
+  .rail-meta{ flex-direction:row; flex-wrap:wrap; gap:1.4rem 2.5rem; padding-bottom:0; border-bottom:none; }
+  .rail-metrics{ flex-direction:row; flex-wrap:wrap; gap:1.4rem 2.5rem; }
+  .nav-links{ display:none; }
+  .nav-burger{ display:flex; }
+  .mobile-menu{ display:flex; }
+  .nav-logo img{ height:44px; margin-left:-8px; }
+}
+@media(max-width:600px){
+  .cs-metrics{ grid-template-columns:1fr; }
+}
+
+/* ── PRINT (PDF export for outreach attachments) ── */
+/* Renders the page itself to PDF so wording can never drift from the HTML. */
+@media print {
+  @page { size: A4; margin: 14mm 13mm 15mm; }
+  html { scroll-behavior:auto; }
+  body { background:#fff; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+
+  /* chrome that only makes sense on the web */
+  nav, .mobile-menu, .nav-burger { display:none !important; }
+
+  /* scroll-reveal never fires in print — force everything visible */
+  .reveal { opacity:1 !important; transform:none !important; }
+  /* hero text uses entrance animations (fill-mode:both) that otherwise freeze it at opacity:0 */
+  .cs-eyebrow, .cs-h1, .cs-dek { animation:none !important; opacity:1 !important; transform:none !important; }
+
+  /* let the dark bands run edge-to-edge of the print margin box */
+  #cs-hero { padding:2.4rem 0 1.9rem !important; }
+  #cs-cta { padding:2.8rem 0 !important; }
+  footer { padding:1.8rem 0 1.1rem !important; break-inside:avoid; }
+  .footer-g { margin-bottom:1.6rem !important; gap:1.6rem !important; }
+  .footer-b { padding-top:1.1rem !important; }
+  .cs-hero-inner, .cs-cta-inner, .footer-g, .footer-b { max-width:100% !important; }
+
+  /* single reading column; rail becomes a compact strip */
+  .cs-body { display:block !important; max-width:100% !important; padding:1.4rem 0 0.6rem !important; }
+  .cs-rail { position:static !important; flex-direction:row !important; flex-wrap:wrap; gap:1rem 2.4rem !important; margin-bottom:1.4rem; padding-bottom:1.2rem; border-bottom:1px solid var(--border); break-inside:avoid; }
+  .rail-meta { flex-direction:row !important; flex-wrap:wrap; gap:1rem 2.4rem !important; padding-bottom:0; border-bottom:none; }
+  .rail-metrics { flex-direction:row !important; flex-wrap:wrap; gap:1rem 2.4rem !important; }
+  .cs-article { max-width:100% !important; }
+
+  /* keep atomic blocks and headings intact across page breaks */
+  .cs-sec-head, .cs-article h2 { break-after:avoid; }
+  .cs-pull, .cs-metrics, .cs-metric, .rail-metric, #cs-hero, #cs-cta { break-inside:avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="/" class="nav-logo"><img id="navLogoImg" src="/Logo White.png" alt="Hira Data Solutions"></a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li class="nav-item has-dropdown">
+      <a>Services</a>
+      <div class="nav-dropdown">
+        <a href="/audit.html">Data Audit</a>
+        <a href="/data-assistant.html">Data Assistant</a>
+        <a href="/deep-dive-sprints.html">Deep-Dive Sprints</a>
+      </div>
+    </li>
+    <li><a href="/our-work/" class="active">Our Work</a></li>
+    <li><a href="/about.html">About</a></li>
+    <li><a href="/contact.html">Contact</a></li>
+    <li><a href="BOOKING_URL" target="_blank" rel="noopener" class="nav-cta">Book a call</a></li>
+  </ul>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/" class="mm-link">Home</a>
+  <div class="mm-group">
+    <button class="mm-toggle" id="mmServicesToggle">Services</button>
+    <div class="mm-sub">
+      <a href="/audit.html">Data Audit</a>
+      <a href="/data-assistant.html">Data Assistant</a>
+      <a href="/deep-dive-sprints.html">Deep-Dive Sprints</a>
+    </div>
+  </div>
+  <a href="/our-work/" class="mm-link">Our Work</a>
+  <a href="/about.html" class="mm-link">About</a>
+  <a href="/contact.html" class="mm-link">Contact</a>
+  <a href="BOOKING_URL" target="_blank" rel="noopener" class="mm-cta">Book a call</a>
+</div>
+
+<!-- HERO (dark) -->
+<section id="cs-hero">
+  <div class="cs-hero-inner">
+    <div class="cs-eyebrow"><span class="dot"></span>Case Study · Product Profitability</div>
+    <h1 class="cs-h1">Which bundles actually <em>make money</em></h1>
+    <p class="cs-dek">A broad portfolio of bundles, but no per-product view of margin. We built the single source of truth that shows which products earn their place — and which to fix or cut.</p>
+  </div>
+</section>
+
+<!-- BODY: sticky rail + numbered article -->
+<div class="cs-body">
+
+  <!-- SIGNATURE DEVICE: sticky meta rail -->
+  <aside class="cs-rail reveal">
+    <div class="rail-meta">
+      <div class="rail-row"><span class="k">Sector</span><span class="v">Telecoms operator</span></div>
+      <div class="rail-row"><span class="k">Engagement</span><span class="v">Product Profitability Sprint</span></div>
+      <div class="rail-row"><span class="k">Scope</span><span class="v">Full consumer bundle portfolio</span></div>
+    </div>
+    <div class="rail-metrics">
+      <div class="rail-metric lead"><div class="n">Per-bundle</div><div class="l">Cost, revenue and margin at the individual bundle level</div></div>
+      <div class="rail-metric"><div class="n">What-if</div><div class="l">Price and allowance scenarios modelled before launch</div></div>
+      <div class="rail-metric"><div class="n">One view</div><div class="l">A single source of truth for product performance</div></div>
+    </div>
+  </aside>
+
+  <!-- READING COLUMN -->
+  <article class="cs-article">
+
+    <!-- 01 -->
+    <section class="cs-sec reveal">
+      <div class="cs-sec-head"><span class="cs-num">01</span><span class="cs-kicker">The commercial question</span></div>
+      <h2>Which bundles <em>actually</em> made money?</h2>
+      <div class="cs-prose">
+        <p>The business sold a wide range of price-and-allowance bundles but had no per-product view of cost, revenue and margin. It could not say with confidence which bundles to keep, which to reprice, and which were quietly losing money and should be retired or redesigned.</p>
+      </div>
+    </section>
+
+    <!-- 02 -->
+    <section class="cs-sec reveal">
+      <div class="cs-sec-head"><span class="cs-num">02</span><span class="cs-kicker">Context</span></div>
+      <h2>Profitability understood only in <em>aggregate</em></h2>
+      <div class="cs-prose">
+        <p>The client is a UK telecoms operator running a broad portfolio of consumer bundles, each pairing a price with voice, data and messaging allowances. Profitability was understood across the business as a whole, but never at the level of the individual product.</p>
+        <p>Usage data and cost data lived in separate systems, and nothing tied a bundle's price and allowances to what it actually cost to serve or to what customers actually used. Pricing and product decisions were being made without a reliable read on margin per bundle.</p>
+      </div>
+    </section>
+
+    <!-- 03 -->
+    <section class="cs-sec reveal">
+      <div class="cs-sec-head"><span class="cs-num">03</span><span class="cs-kicker">Our approach</span></div>
+      <h2>One view, built at the <em>bundle</em> level</h2>
+      <div class="cs-prose">
+        <p>We built a single product-profitability view that brought price, allowances, customer adoption, real usage and cost-to-serve together for each individual bundle. For every product we tied revenue and cost-to-serve to actual consumption — looking at the full distribution of usage, not just averages, so over- and under-used allowances became visible.</p>
+        <p>On top of that we added a decision-support layer for modelling what-if changes to price or allowances, and for tracking each product's profitability as it moved over time — so the effect of a change could be tested before it ever reached customers.</p>
+      </div>
+    </section>
+
+    <!-- 04 -->
+    <section class="cs-sec reveal">
+      <div class="cs-sec-head"><span class="cs-num">04</span><span class="cs-kicker">What we found</span></div>
+      <h2>Every bundle as its own <em>P&amp;L</em></h2>
+      <div class="cs-prose">
+        <p>The value here was not a single number — it was visibility the business had never had. For the first time, every bundle could be read as its own small P&amp;L, and the patterns that matter for a product portfolio came into view: which bundles drove volume but little margin versus which genuinely drove profit; allowances <strong>generously over-provisioned</strong> relative to what customers actually used — a direct cost and repricing lever; and loss-making products that were now obvious candidates for redesign or removal.</p>
+      </div>
+      <div class="cs-pull">
+        <div class="big">Every bundle became its own <em>P&amp;L</em></div>
+        <div class="cap">Margin could be read at the level of the individual product — not just across the portfolio in aggregate — so the questions a product team always wants to answer became answerable from one place.</div>
+      </div>
+      <div class="cs-metrics">
+        <div class="cs-metric lead"><div class="n">Per-bundle</div><div class="l">Cost-to-serve, revenue and margin tracked per individual bundle, not just in aggregate</div></div>
+        <div class="cs-metric"><div class="n">What-if</div><div class="l">Price and allowance changes modelled before they reach customers</div></div>
+        <div class="cs-metric teal"><div class="n">Usage</div><div class="l">Actual consumption analysed beyond averages, exposing over-provisioned allowances</div></div>
+        <div class="cs-metric"><div class="n">One source</div><div class="l">Fragmented usage and cost data unified into a single product-performance view</div></div>
+      </div>
+    </section>
+
+    <!-- 05 -->
+    <section class="cs-sec reveal">
+      <div class="cs-sec-head"><span class="cs-num">05</span><span class="cs-kicker">The outcome</span></div>
+      <h2>From instinct to <em>evidence</em></h2>
+      <div class="cs-prose">
+        <p>The operator gained a single source of truth for product-level performance — one place where usage, cost and profitability met at the bundle level. That turned complex, fragmented data into clear commercial actions: a defensible basis to retire or redesign loss-making bundles, to reprice over-provisioned allowances, and to test alternative configurations before committing to them.</p>
+        <p>Pricing and product strategy moved from instinct toward evidence — decisions grounded in what each product actually earned, not in what the portfolio looked like on average.</p>
+      </div>
+    </section>
+
+    <!-- 06 -->
+    <section class="cs-sec reveal">
+      <div class="cs-sec-head"><span class="cs-num">06</span><span class="cs-kicker">The Sprint variant</span></div>
+      <h2>This is a <em>Product Profitability</em> Sprint</h2>
+      <div class="cs-prose">
+        <p>Product Profitability is one of five Hira Deep-Dive Sprints — a focused, four-week engagement that makes per-product margin visible, so you can see which products earn their place and which to fix or cut. It's the right fit when you sell a range of products or plans but can't say, with confidence, which ones actually make money.</p>
+      </div>
+    </section>
+
+  </article>
+</div>
+
+<!-- CTA (dark band) -->
+<section id="cs-cta">
+  <div class="cs-cta-inner reveal">
+    <span class="cs-cta-tag">Deep-Dive Sprint · Product Profitability</span>
+    <h2>Which of your products <em>actually</em> make money?</h2>
+    <p>Like every Hira engagement, a Product Profitability Sprint starts with a paid Audit to confirm your data can answer the question — then we build the view that answers it.</p>
+    <div class="cs-cta-btns">
+      <a href="BOOKING_URL" class="btn-white">Book a Free Call</a>
+      <a href="/our-work/" class="btn-outline-white">See More of Our Work</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-g">
+    <div class="fbrand"><img src="/Logo White.png" alt="Hira Data Solutions"><p>A data and AI consultancy helping small and growing businesses make better decisions with their data. Based in the UK, working globally.</p></div>
+    <div class="fcol"><h5>Services</h5><a href="/audit.html">Data Audit</a><a href="/data-assistant.html">Data Assistant</a><a href="/deep-dive-sprints.html">Deep-Dive Sprints</a></div>
+    <div class="fcol"><h5>Company</h5><a href="/about.html">About</a><a href="/our-work/">Our Work</a><a href="/contact.html">Contact</a><a href="https://linkedin.com/company/hira-data-solutions" target="_blank" rel="noopener">LinkedIn</a></div>
+    <div class="fcol"><h5>Contact</h5><a href="mailto:hello@hiradatasolutions.com">hello@hiradatasolutions.com</a><a href="BOOKING_URL" target="_blank" rel="noopener">Book a call</a></div>
+  </div>
+  <div class="footer-b"><span>© 2026 Hira Data Solutions Ltd. All rights reserved.</span><span>Registered in England &amp; Wales · Company No. 14832706</span></div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  const navLogoImg = document.getElementById('navLogoImg');
+  // Logo inverts with the nav background: white over the dark hero, navy once the nav gains its light scrolled background.
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY > 40;
+    nav.classList.toggle('scrolled', scrolled);
+    navLogoImg.src = scrolled ? '/Logo Navy.png' : '/Logo White.png';
+  });
+
+  const burger = document.getElementById('navBurger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  document.querySelectorAll('.mm-link, .mm-cta').forEach(link => {
+    link.addEventListener('click', () => {
+      burger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    });
+  });
+  const mmToggle = document.getElementById('mmServicesToggle');
+  if (mmToggle) { mmToggle.addEventListener('click', () => { mmToggle.parentElement.classList.toggle('open'); }); }
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => { if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('in'), i*70); obs.unobserve(e.target); } });
+  }, {threshold:0.08});
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
