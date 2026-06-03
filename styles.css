@@ -205,6 +205,20 @@ h1 em { font-style: normal; color: var(--purple); }
 .typing span { width:5px; height:5px; border-radius:50%; background:var(--purple); animation:ty 1.3s infinite; }
 .typing span:nth-child(2){animation-delay:.18s} .typing span:nth-child(3){animation-delay:.36s}
 @keyframes ty { 0%,60%,100%{opacity:0.2;transform:translateY(0)} 30%{opacity:1;transform:translateY(-3px)} }
+.hcard-input {
+  display:flex; align-items:center; gap:0.6rem;
+  padding:0.7rem 0.9rem; border-top:1px solid var(--border); background:var(--bg-card-2);
+}
+.hci-field {
+  flex:1; background:var(--bg-card); border:1px solid var(--border);
+  border-radius:999px; padding:0.55rem 0.95rem;
+  font-size:0.78rem; color:var(--dim); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.hci-send {
+  width:32px; height:32px; flex-shrink:0; border-radius:50%;
+  background:linear-gradient(135deg,var(--purple),var(--teal)); color:#fff;
+  display:flex; align-items:center; justify-content:center;
+}
 .hero-float {
   position:absolute; bottom:-1.5rem; left:-1.5rem;
   background:var(--bg-card); border:1px solid var(--border-2); border-radius:13px;
