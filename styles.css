@@ -720,3 +720,10 @@ body.page-sprints .sprint-row .scard-more { margin-top: 0; white-space: nowrap; 
   body.page-sprints .sprint-row-main { grid-column: 2; }
   body.page-sprints .sprint-row .scard-more { grid-column: 2; }
 }
+
+/* ── THANK YOU (post-submission confirmation) ── */
+body.page-thanks .thanks-hero { min-height: calc(100vh - 64px); display: flex; align-items: center; justify-content: center; text-align: center; padding: 10rem 6% 6rem; background: var(--bg-2); }
+body.page-thanks .thanks-inner { max-width: 620px; margin: 0 auto; }
+body.page-thanks .thanks-hero .hero-eyebrow { justify-content: center; }
+body.page-thanks .thanks-hero .hero-body { margin: 0 auto; }
+body.page-thanks .thanks-hero .hero-btns { justify-content: center; }
