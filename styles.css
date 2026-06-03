@@ -726,4 +726,4 @@ body.page-thanks .thanks-hero { min-height: calc(100vh - 64px); display: flex; a
 body.page-thanks .thanks-inner { max-width: 620px; margin: 0 auto; }
 body.page-thanks .thanks-hero .hero-eyebrow { justify-content: center; }
 body.page-thanks .thanks-hero .hero-body { margin: 0 auto; }
-body.page-thanks .thanks-hero .hero-btns { justify-content: center; }
+body.page-thanks .thanks-hero .hero-btns { justify-content: center; margin-top: 2.25rem; }
