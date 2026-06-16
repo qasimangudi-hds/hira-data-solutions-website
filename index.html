@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/styles.css?v=7">
 </head>
 <body>
 
@@ -28,9 +28,16 @@
     <li class="nav-item has-dropdown">
       <a>Services</a>
       <div class="nav-dropdown">
+        <a href="/training.html">Data &amp; AI Training</a>
         <a href="/audit.html">Data Audit</a>
-        <a href="/data-assistant.html">Data Assistant</a>
-        <a href="/deep-dive-sprints.html">Deep-Dive Sprints</a>
+        <div class="nav-dd-group">
+          <a href="/build.html">Build &amp; Execute</a>
+          <div class="nav-dd-sub">
+            <a href="/deep-dive-sprints.html">Deep-Dive Sprints</a>
+            <a href="/data-assistant.html">Data Assistant</a>
+            <a href="/ai-builds.html">AI Builds &amp; Workflows</a>
+          </div>
+        </div>
       </div>
     </li>
     <li><a href="/our-work/">Our Work</a></li>
@@ -47,9 +54,12 @@
   <div class="mm-group">
     <button class="mm-toggle" id="mmServicesToggle">Services</button>
     <div class="mm-sub">
+      <a href="/training.html">Data &amp; AI Training</a>
       <a href="/audit.html">Data Audit</a>
-      <a href="/data-assistant.html">Data Assistant</a>
-      <a href="/deep-dive-sprints.html">Deep-Dive Sprints</a>
+      <a href="/build.html">Build &amp; Execute</a>
+      <a href="/deep-dive-sprints.html" class="mm-sub2">Deep-Dive Sprints</a>
+      <a href="/data-assistant.html" class="mm-sub2">Data Assistant</a>
+      <a href="/ai-builds.html" class="mm-sub2">AI Builds &amp; Workflows</a>
     </div>
   </div>
   <a href="/our-work/" class="mm-link">Our Work</a>
@@ -150,7 +160,7 @@
     <div class="diff-body reveal">
       <p>These days there's a lot of hype, and every business is being sold AI tools and agents. What none of them can do is sit with you and your team and work out what your numbers actually mean — what counts as a customer, what counts as active, what counts as revenue, and what to do when the systems disagree. In the data world, that's what we call the semantic layer.</p>
       <div class="diff-pull">
-        <p>That's interrogation work. It's slow, it's human, and it's the difference between an AI that gives you answers and an AI that gives you the <strong style="color:var(--purple-light);font-weight:600;">right</strong> answers. And that's where the audit starts.</p>
+        <p>That's interrogation work. It's slow, it's human, and it's the difference between an AI that gives you answers and an AI that gives you the <strong style="color:var(--purple-light);font-weight:600;">right</strong> answers.</p>
       </div>
     </div>
   </div>
@@ -161,31 +171,31 @@
   <div class="s-inner">
     <div class="reveal">
       <span class="s-label">How we work</span>
-      <h2>Three ways we work, <em>all starting with the Audit.</em></h2>
-      <p class="s-sub">The audit is the front door to every engagement — a clear, honest read on your data, tooling, semantic layer and AI-readiness before anything gets built. From there, you can put that data to work day to day with the Data Assistant, or answer a specific commercial question with a Deep-Dive Sprint.</p>
+      <h2>Build the confidence first. Then <em>build what works.</em></h2>
+      <p class="s-sub">Our work follows three stages that reinforce each other — training your team on data and AI, auditing where they can add real value, and building the thing that delivers it. Most clients start with training, though there's no fixed entry point.</p>
     </div>
     <div class="svc-grid reveal" style="margin-top:3rem;">
-      <a href="/audit.html" class="scard highlight">
+      <a href="/training.html" class="scard highlight">
         <span class="scard-tag">Start here</span>
-        <h3>The Data Audit</h3>
-        <p>A short, structured diagnostic of your data — your systems, your semantic layer, your data quality and your AI-readiness — so you know exactly where you stand before anything gets built.</p>
+        <h3>Data &amp; AI Training</h3>
+        <p>Practical, jargon-free training that gets your team genuinely confident with data and AI — pitched to the right level, for whole teams or individuals.</p>
+        <span class="scard-more">Explore Data &amp; AI Training
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </a>
+      <a href="/audit.html" class="scard">
+        <span class="scard-tag">Find the use cases</span>
+        <h3>Data Audit</h3>
+        <p>A structured diagnostic that maps your data, then identifies and prioritises the concrete AI and data use cases worth pursuing — with clear recommendations for what to do next.</p>
         <span class="scard-more">Explore the Audit
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </span>
       </a>
-      <a href="/data-assistant.html" class="scard">
-        <span class="scard-tag">Put data to work</span>
-        <h3>The Data Assistant</h3>
-        <p>Our AI bot: ask your business questions in plain English and get clear answers back — right inside Telegram, Teams or Slack. No SQL, no dashboards, no training.</p>
-        <span class="scard-more">Explore the Data Assistant
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </span>
-      </a>
-      <a href="/deep-dive-sprints.html" class="scard">
-        <span class="scard-tag">Answer one question</span>
-        <h3>Deep-Dive Sprints</h3>
-        <p>A focused four-week investigation into one commercial question — revenue leakage, churn, pricing, conversion — that has surfaced high-value opportunities others had missed.</p>
-        <span class="scard-more">Explore Deep-Dive Sprints
+      <a href="/build.html" class="scard">
+        <span class="scard-tag">Put it to work</span>
+        <h3>Build what the audit points to</h3>
+        <p>We build what the audit surfaces — a focused Deep-Dive Sprint, the Data Assistant for everyday answers, or a bespoke AI build or workflow designed around your use case.</p>
+        <span class="scard-more">Explore Build &amp; Execute
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </span>
       </a>
@@ -320,7 +330,7 @@
 <footer>
   <div class="footer-g">
     <div class="fbrand"><img src="/Logo White.png" alt="Hira Data Solutions"><p>A data and AI consultancy helping small and growing businesses make better decisions with their data. Based in the UK, working globally.</p></div>
-    <div class="fcol"><h5>Services</h5><a href="/audit.html">Data Audit</a><a href="/data-assistant.html">Data Assistant</a><a href="/deep-dive-sprints.html">Deep-Dive Sprints</a></div>
+    <div class="fcol"><h5>Services</h5><a href="/training.html">Data &amp; AI Training</a><a href="/audit.html">Data Audit</a><a href="/build.html">Build &amp; Execute</a></div>
     <div class="fcol"><h5>Company</h5><a href="/about.html">About</a><a href="/our-work/">Our Work</a><a href="/contact.html">Contact</a><a href="https://linkedin.com/company/hira-data-solutions" target="_blank" rel="noopener">LinkedIn</a></div>
     <div class="fcol"><h5>Contact</h5><a href="mailto:hello@hiradatasolutions.com">hello@hiradatasolutions.com</a><a href="https://calendar.google.com/appointments/schedules/AcZssZ352c9e54-i47njDy9_GwOHDaZGp1imphoXa4w6RphU9j8VLAQSYUx4SxgiCgkBkAe_tuOsitwL" target="_blank" rel="noopener">Book a call</a></div>
   </div>

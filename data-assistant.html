@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/styles.css?v=7">
 </head>
 <body class="page-product">
 
@@ -28,9 +28,16 @@
     <li class="nav-item has-dropdown">
       <a class="active">Services</a>
       <div class="nav-dropdown">
+        <a href="/training.html">Data &amp; AI Training</a>
         <a href="/audit.html">Data Audit</a>
-        <a href="/data-assistant.html">Data Assistant</a>
-        <a href="/deep-dive-sprints.html">Deep-Dive Sprints</a>
+        <div class="nav-dd-group">
+          <a href="/build.html">Build &amp; Execute</a>
+          <div class="nav-dd-sub">
+            <a href="/deep-dive-sprints.html">Deep-Dive Sprints</a>
+            <a href="/data-assistant.html">Data Assistant</a>
+            <a href="/ai-builds.html">AI Builds &amp; Workflows</a>
+          </div>
+        </div>
       </div>
     </li>
     <li><a href="/our-work/">Our Work</a></li>
@@ -47,9 +54,12 @@
   <div class="mm-group">
     <button class="mm-toggle" id="mmServicesToggle">Services</button>
     <div class="mm-sub">
+      <a href="/training.html">Data &amp; AI Training</a>
       <a href="/audit.html">Data Audit</a>
-      <a href="/data-assistant.html">Data Assistant</a>
-      <a href="/deep-dive-sprints.html">Deep-Dive Sprints</a>
+      <a href="/build.html">Build &amp; Execute</a>
+      <a href="/deep-dive-sprints.html" class="mm-sub2">Deep-Dive Sprints</a>
+      <a href="/data-assistant.html" class="mm-sub2">Data Assistant</a>
+      <a href="/ai-builds.html" class="mm-sub2">AI Builds &amp; Workflows</a>
     </div>
   </div>
   <a href="/our-work/" class="mm-link">Our Work</a>
@@ -62,9 +72,9 @@
 <section class="offer-hero">
   <div class="offer-hero-inner reveal">
     <div class="offer-hero-text">
-      <div class="hero-eyebrow"><span class="eyebrow-dot"></span>The product</div>
+      <div class="hero-eyebrow"><span class="eyebrow-dot"></span>One option in the Build stage</div>
       <h1>Ask your business a question. <em>Get an answer.</em></h1>
-      <p class="offer-dek">The Hira Data Assistant is an AI-powered interface to your data. No SQL, no dashboards, no training — just plain English, wherever your team already works.</p>
+      <p class="offer-dek">The Hira Data Assistant is an AI-powered interface to your data — one of the things we build once the audit points to it. No SQL, no dashboards, no training; just plain English, wherever your team already works.</p>
       <div class="hero-btns">
         <a href="https://calendar.google.com/appointments/schedules/AcZssZ352c9e54-i47njDy9_GwOHDaZGp1imphoXa4w6RphU9j8VLAQSYUx4SxgiCgkBkAe_tuOsitwL" target="_blank" rel="noopener" class="btn-fill">Book a call</a>
         <a href="/audit.html" class="btn-ghost">Start with the Audit</a>
@@ -155,6 +165,38 @@
   </div>
 </section>
 
+<!-- PART OF BUILD & EXECUTE -->
+<section id="siblings">
+  <div class="s-inner">
+    <div class="reveal">
+      <span class="s-label">Part of Build &amp; Execute</span>
+      <h2>One of three ways we <em>build</em></h2>
+      <p class="s-sub">The Data Assistant is one mode in the Build &amp; Execute stage. Where a different approach fits the opportunity better, we'll point you to it.</p>
+    </div>
+    <div class="svc-grid reveal" style="margin-top:3rem;">
+      <a href="/deep-dive-sprints.html" class="scard">
+        <h3>Deep-Dive Sprints</h3>
+        <p>A focused four-week investigation into one commercial question, with real numbers and a clear recommendation.</p>
+        <span class="scard-more">Explore Deep-Dive Sprints
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </a>
+      <a href="/ai-builds.html" class="scard">
+        <h3>AI Builds &amp; Workflows</h3>
+        <p>Bespoke AI automations, agents and workflows, designed around the specific use cases the audit surfaces.</p>
+        <span class="scard-more">Explore AI Builds
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </span>
+      </a>
+    </div>
+    <div class="reveal" style="margin-top:2.5rem;">
+      <a href="/build.html" class="link-arrow" style="color:var(--purple);">See the full Build &amp; Execute stage
+        <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-dark">
   <div class="cta-inner reveal">
@@ -176,7 +218,7 @@
 <footer>
   <div class="footer-g">
     <div class="fbrand"><img src="/Logo White.png" alt="Hira Data Solutions"><p>A data and AI consultancy helping small and growing businesses make better decisions with their data. Based in the UK, working globally.</p></div>
-    <div class="fcol"><h5>Services</h5><a href="/audit.html">Data Audit</a><a href="/data-assistant.html">Data Assistant</a><a href="/deep-dive-sprints.html">Deep-Dive Sprints</a></div>
+    <div class="fcol"><h5>Services</h5><a href="/training.html">Data &amp; AI Training</a><a href="/audit.html">Data Audit</a><a href="/build.html">Build &amp; Execute</a></div>
     <div class="fcol"><h5>Company</h5><a href="/about.html">About</a><a href="/our-work/">Our Work</a><a href="/contact.html">Contact</a><a href="https://linkedin.com/company/hira-data-solutions" target="_blank" rel="noopener">LinkedIn</a></div>
     <div class="fcol"><h5>Contact</h5><a href="mailto:hello@hiradatasolutions.com">hello@hiradatasolutions.com</a><a href="https://calendar.google.com/appointments/schedules/AcZssZ352c9e54-i47njDy9_GwOHDaZGp1imphoXa4w6RphU9j8VLAQSYUx4SxgiCgkBkAe_tuOsitwL" target="_blank" rel="noopener">Book a call</a></div>
   </div>
